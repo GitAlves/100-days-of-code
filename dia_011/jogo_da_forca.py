@@ -1,32 +1,40 @@
 from random import choice as ch
 from palavras import lista_frutas
 
+
+def lembrete_tentativas(numero):
+    return f'\n--------- TENTATIVAS: {numero} -------------\n'
+
+
 palavra = ch(lista_frutas)
 palavra_escondida = '_' * len(palavra)
 
-print(palavra_escondida)
-
 tentativas = 10
+print(lembrete_tentativas(tentativas))
 
 while tentativas:
-    chute = input('Chute uma letra: ')
+    print(palavra_escondida)
+
+    chute = input('\nChute uma letra: ')
 
     if chute in palavra:
-        posicao = palavra.index(chute)
+        print('\nLETRA ENCONTRADA!!!\n')
 
-        palavra_atualizada = ''
-        contador = 0
+        rascunho = list(palavra_escondida)
 
-        for letra in palavra_escondida:
-            if contador == posicao:
-                palavra_atualizada = palavra_atualizada + chute
-            else:
-                palavra_atualizada = palavra_atualizada + letra
-            contador += 1
+        for posicao, letra in enumerate(palavra):
+            if letra == chute:
+                rascunho[posicao] = letra
 
-        palavra_escondida = palavra_atualizada
-        print(palavra_escondida)
+        palavra_escondida = ''.join(rascunho)
+    else:
+        tentativas -= 1
+        print('\nErrou!')
+        print(lembrete_tentativas(tentativas))
 
     if palavra == palavra_escondida:
         print('Meus parabéns! Você ganhou.')
         break
+
+if tentativas == 0:
+    print(f'Game over!\nA palavra era "{palavra}".')
