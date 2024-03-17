@@ -29,7 +29,11 @@ while tentativas:
         palavra_escondida = ''.join(rascunho)
     else:
         tentativas -= 1
+<<<<<<< HEAD
         print('Errou!')
+=======
+        print('\nErrou!')
+>>>>>>> 7a096fd4722732d439d660a7fc8bd46896a17361
         print(lembrete_tentativas(tentativas))
 
     if palavra == palavra_escondida:

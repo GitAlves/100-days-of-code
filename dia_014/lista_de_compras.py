@@ -14,7 +14,11 @@ class ListaDeCompras:
             del self.__itens[posicao]
             del self.__quantidade[posicao]
 
+<<<<<<< HEAD
             print(f'\nItem "{item}" removido da lista de compras.\n')
+=======
+            print(f'\nItem {item} removido da lista de compras.\n')
+>>>>>>> 7a096fd4722732d439d660a7fc8bd46896a17361
 
     def listar_itens(self):
         print('    Item         Quantidade     ', end='\n\n')
