@@ -1,6 +1,3 @@
-from time import sleep
-
-
 class UmPaciente:
     def __init__(self, paciente):
         self.paciente = paciente
@@ -24,20 +21,13 @@ class ListaPacientes(UmPaciente):
 
         print(f'\nAdicionando {paciente} a fila!\n')
 
+    def adicionar_paciente_no_fim(self, paciente):
+        ...
 
-lista_encadeada = ListaPacientes()
-while True:
-    nome_paciente = input('\nDigite o nome do paciente: ')
+    def remover_paciente(self, paciente):
+        lista_apoio = self.paciente
 
-    if nome_paciente != '':
-        lista_encadeada.adicionar_paciente(nome_paciente)
-        sleep(2)
+        if lista_apoio.paciente == paciente:
+            self.paciente = lista_apoio.proximoPaciente
 
-        print('\n--------- Listando pacientes -----------\n')
-        print(lista_encadeada)
-    else:
-        break
-
-print('\n\n------- PROCESSO ENCERRADO --------\n\n')
-sleep(2)
-print(f'\nA lista final foi: {lista_encadeada}\n')
+        print(f'\nPaciente {paciente} removido da fila!\n')
