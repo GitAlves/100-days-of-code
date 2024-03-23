@@ -32,22 +32,21 @@ class ListaPacientes(UmPaciente):
 
             lista = lista.proximoPaciente
 
+        print(f'\nPaciente {paciente} adicionado no início da fila!\n')
+
     def remover_paciente(self, paciente):
         lista_apoio = self.paciente
 
         if lista_apoio.paciente == paciente:
             self.paciente = lista_apoio.proximoPaciente
+        else:
+            auxiliar = None
+            while lista_apoio.paciente != paciente:
+                if lista_apoio.proximoPaciente.paciente == paciente:
+                    auxiliar = lista_apoio.proximoPaciente
+                    lista_apoio.proximoPaciente = auxiliar.proximoPaciente
+                    break
+
+                lista_apoio = lista_apoio.proximoPaciente
 
         print(f'\nPaciente {paciente} removido da fila!\n')
-
-
-lista_pacientes = ListaPacientes()
-lista_pacientes.adicionar_paciente('Joaquim')
-lista_pacientes.adicionar_paciente('Ana')
-lista_pacientes.adicionar_paciente('Joanna')
-print(f'Listando: {lista_pacientes}')
-lista_pacientes.adicionar_paciente_no_fim('Adamastor')
-lista_pacientes.adicionar_paciente_no_fim('Joaquina')
-print(f'Listando: {lista_pacientes}')
-lista_pacientes.adicionar_paciente_no_fim('Marcos')
-print(f'Listando: {lista_pacientes}')
