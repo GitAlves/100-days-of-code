@@ -32,7 +32,7 @@ class ListaPacientes(UmPaciente):
 
             lista = lista.proximoPaciente
 
-        print(f'\nPaciente {paciente} adicionado no início da fila!\n')
+        print(f'\nPaciente "{paciente}" adicionado no início da fila!\n')
 
     def remover_paciente(self, paciente):
         lista_apoio = self.paciente
@@ -49,4 +49,27 @@ class ListaPacientes(UmPaciente):
 
                 lista_apoio = lista_apoio.proximoPaciente
 
-        print(f'\nPaciente {paciente} removido da fila!\n')
+        print(f'\nPaciente "{paciente}" removido da fila!\n')
+
+    def listar_pacientes(self):
+        lista = []
+        lista_apoio = self.paciente
+
+        while lista_apoio.paciente is not None:
+            lista.append(lista_apoio.paciente)
+            if lista_apoio.proximoPaciente is None:
+                break
+
+            lista_apoio = lista_apoio.proximoPaciente
+
+        lista.reverse()
+
+        posicao, nome = 'Posição', 'Nome'
+        print('--------------------------------')
+        print('         LISTANDO PACIENTES      ')
+        print('--------------------------------\n')
+
+        print(f'{posicao:20} {nome}\n')
+
+        for indice, paciente in enumerate(lista):
+            print(f'   {indice}                {paciente}')
