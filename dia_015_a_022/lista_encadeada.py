@@ -43,33 +43,36 @@ class ListaPacientes(UmPaciente):
         print(f'\nAdicionando {paciente} a fila!\n')
 
     def adicionar_paciente_no_fim(self, paciente=None):
-        try:
-            teste_tipo = int(paciente)  # noqa: F841;
-        except TypeError:
-            '''
-            Caso nenhum nome tenha sido passado para o método
-            '''
-            return print('Insira o nome do paciente para continuar!')
-        except ValueError:
-            '''
-            Significa que um nome foi passado para o método
-            '''
-            self.pacientes_inseridos.append(paciente)
-            lista = self.paciente
-            novo_paciente = UmPaciente(paciente)
+        if len(self.pacientes_inseridos) > 0:
+            try:
+                teste_tipo = int(paciente)  # noqa: F841;
+            except TypeError:
+                '''
+                Caso nenhum nome tenha sido passado para o método
+                '''
+                return print('Insira o nome do paciente para continuar!')
+            except ValueError:
+                '''
+                Significa que um nome foi passado para o método
+                '''
+                self.pacientes_inseridos.append(paciente)
+                lista = self.paciente
+                novo_paciente = UmPaciente(paciente)
 
-            while lista.paciente is not None:
-                if lista.proximoPaciente is None:
-                    lista.proximoPaciente = novo_paciente
-                    break
+                while lista.paciente is not None:
+                    if lista.proximoPaciente is None:
+                        lista.proximoPaciente = novo_paciente
+                        break
 
-                lista = lista.proximoPaciente
+                    lista = lista.proximoPaciente
+            else:
+                return print('O nome do paciente deve ter letras, não números')
+
+            print(f'\nPaciente "{paciente}" adicionado no início da fila!\n')
         else:
-            return print('O nome do paciente deve ter letras, não números')
+            print('A lista está vazia. Não há porque passar pacientes na frente.')
 
-        print(f'\nPaciente "{paciente}" adicionado no início da fila!\n')
-
-    def remover_paciente(self, paciente=None):
+    def remover_paciente(self, paciente):
         try:
             teste_tipo = int(paciente)  # noqa: F841;
         except TypeError:
@@ -125,3 +128,11 @@ class ListaPacientes(UmPaciente):
 
             for indice, paciente, estado in enumerate(lista):
                 print(f'   {indice + 1}                {paciente}')
+
+
+lista_pacientes = ListaPacientes()
+
+print('Adicionando pacientes em uma lista sem nenhum paciente')
+lista_pacientes.adicionar_paciente('Joanna')
+lista_pacientes.adicionar_paciente_no_fim('Joaquim')
+print(lista_pacientes)
