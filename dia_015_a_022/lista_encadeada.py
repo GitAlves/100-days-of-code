@@ -20,7 +20,7 @@ class ListaPacientes(UmPaciente):
 
     def adicionar_paciente(self, paciente=None):
         try:
-            print(int(paciente))
+            tipo_dado = int(paciente)  # noqa: F841;
         except TypeError:
             '''
             Caso nenhum nome tenha sido passado
@@ -70,9 +70,9 @@ class ListaPacientes(UmPaciente):
 
             print(f'\nPaciente "{paciente}" adicionado no início da fila!\n')
         else:
-            print('A lista está vazia. Não há porque passar pacientes na frente.')
+            print('A lista está vazia. Não há porque passar pacientes na frente.')  # noqa: E501;
 
-    def remover_paciente(self, paciente):
+    def remover_paciente(self, paciente=None):
         try:
             teste_tipo = int(paciente)  # noqa: F841;
         except TypeError:
@@ -132,7 +132,79 @@ class ListaPacientes(UmPaciente):
 
 lista_pacientes = ListaPacientes()
 
-print('Adicionando pacientes em uma lista sem nenhum paciente')
-lista_pacientes.adicionar_paciente('Joanna')
+print('\n\n--- Caso 1: Removendo pacientes ---\n\n')
+sleep(2)
+print('Tentando remover um paciente sem dizer qual\n')
+sleep(2)
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.remover_paciente()
+
+sleep(1)
+print('\n\nTentando remover um paciente que ainda não foi adicionado\n')
+sleep(2)
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.remover_paciente('Joaquim')
+
+sleep(2)
+print('\n\nPassando um número como nome de paciente\n')
+sleep(2)
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.remover_paciente(3)
+
+sleep(1)
+print('\n\n--- Caso 2: Adicionando pacientes ao fim da lista ---')
+sleep(2)
+print('\n\nQuando se tenta adicionar pacientes ao fim da lista, sendo que ela está vazia\n')  # noqa: E501;
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
 lista_pacientes.adicionar_paciente_no_fim('Joaquim')
-print(lista_pacientes)
+
+sleep(1)
+print('\n\nTentando adicionar pacientes ao fim da lista, sem passar o paciente')  # noqa: E501;
+sleep(2)
+print('Adicionando o primeiro paciente da lista: ', end='')
+lista_pacientes.adicionar_paciente('Joanna')
+sleep(2)
+print('\nAdicionando um novo paciente, sem adicionar o paciente')
+print('\nResultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.adicionar_paciente_no_fim()
+
+sleep(1)
+print('\n\nAdicionando um número como paciente\n')
+sleep(2)
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.adicionar_paciente_no_fim(3)
+
+sleep(1)
+print('\n\n--- Caso 3: Listando pacientes ---')
+sleep(2)
+print('Removendo o único paciente da lista: ', end='')
+sleep(2)
+lista_pacientes.remover_paciente('Joanna')
+
+sleep(1)
+print('Listando uma lista vazia')
+print('Resultado do tratamento de erro: ', end='')
+sleep(2)
+lista_pacientes.listar_pacientes()
+
+sleep(1)
+print('\n\n--- Caso 4: Adicionado pacientes ---\n')
+sleep(2)
+print('Adicionado pacientes, sem digitar o nome do paciente\n')
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.adicionar_paciente()
+
+sleep(1)
+print('\n\nInserindo um número como nome do paciente\n')
+sleep(2)
+print('Resultado do tratamento do erro: ', end='')
+sleep(2)
+lista_pacientes.adicionar_paciente(3)
+print('\n\n')
