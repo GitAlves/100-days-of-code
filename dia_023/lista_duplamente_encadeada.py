@@ -42,3 +42,15 @@ class ListaProdutos:
             self.anterior = novo_produto
 
         print(f'\nProduto "{produto}" foi adicionado com sucesso!\n')
+
+    def inserir_produto_no_final(self, produto):
+        novo_produto = Produto(produto)
+        if self.anterior is None:
+            self.anterior = novo_produto
+            self.proximo = novo_produto
+        else:
+            self.proximo.proximo = novo_produto
+            novo_produto.anterior = self.proximo
+            self.ultimo = novo_produto
+
+        print(f'\nProduto "{produto}" adicionado com sucesso!\n')
