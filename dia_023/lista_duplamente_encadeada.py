@@ -25,8 +25,19 @@ class ListaProdutos:
             return True
         return False
 
-    # def __repr__(self):
-    #     return '[' + str(self.produto) + ']'
+    def __repr__(self):
+        if self.anterior is None:
+            return '[]'
+
+        iterador = self.anterior
+        resultado = '['
+        while iterador:
+            resultado += self.anterior.produto
+            if iterador.proximo:
+                resultado += '<->'
+            iterador = iterador.proximo
+        resultado = ']'
+        return resultado
 
     def inserir_produto_no_inicio(self, produto):
         novo_produto = Produto(produto)
