@@ -18,7 +18,6 @@ class ListaProdutos:
     def __init__(self):
         self.anterior = None
         self.proximo = None
-        self.tamanho = 0
 
     def __repr__(self):
         if self.anterior is None:
@@ -27,7 +26,7 @@ class ListaProdutos:
         iterador = self.anterior
         resultado = '['
         while iterador:
-            resultado += self.anterior.produto
+            resultado += self.iterador.produto
             if iterador.proximo:
                 resultado += '<->'
             iterador = iterador.proximo
@@ -36,7 +35,7 @@ class ListaProdutos:
 
     def inserir_produto_no_inicio(self, produto):
         novo_produto = Produto(produto)
-        if self.vazia():
+        if self.anterior is None:
             self.anterior = novo_produto
             self.proximo = novo_produto
         else:
@@ -44,7 +43,6 @@ class ListaProdutos:
             self.anterior.anterior = novo_produto
             novo_produto.anterior = None
             self.anterior = novo_produto
-        self.tamanho += 1
 
         print(f'\nProduto "{produto}" foi adicionado com sucesso!\n')
 
