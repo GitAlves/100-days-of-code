@@ -14,21 +14,31 @@ class Produto:
             self.proximo)
 
 
-class ListaProdutos(Produto):
+class ListaProdutos:
     def __init__(self):
-        self.produto = None
+        self.anterior = None
+        self.proximo = None
+        self.tamanho = 0
 
-    def __repr__(self):
-        return '[' + str(self.produto) + ']'
+    def vazia(self):
+        if self.tamanho == 0:
+            return True
+        return False
+
+    # def __repr__(self):
+    #     return '[' + str(self.produto) + ']'
 
     def inserir_produto_no_inicio(self, produto):
-        if self.produto is None:
-            novo_produto = Produto(produto)
-            self.produto = novo_produto
+        novo_produto = Produto(produto)
+        if self.vazia():
+            self.anterior = novo_produto
+            self.proximo = novo_produto
         else:
-            novo_produto = Produto(produto)
-            novo_produto.proximo = self.produto
-            self.produto = novo_produto
+            novo_produto.proximo = self.anterior
+            self.anterior.anterior = novo_produto
+            novo_produto.anterior = None
+            self.anterior = novo_produto
+        self.tamanho += 1
 
         print(f'\nProduto "{produto}" foi adicionado com sucesso!\n')
 
@@ -43,3 +53,5 @@ sleep(2)
 lista_produtos.inserir_produto_no_inicio('Fone bluetooth')
 sleep(2)
 print(f'Por hora, a lista duplamente encadeada está ficando assim: \n\n{lista_produtos}\n\n')  # noqa: E501;
+print(lista_produtos.anterior)
+print(lista_produtos.proximo)
