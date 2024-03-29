@@ -20,11 +20,6 @@ class ListaProdutos:
         self.proximo = None
         self.tamanho = 0
 
-    def vazia(self):
-        if self.tamanho == 0:
-            return True
-        return False
-
     def __repr__(self):
         if self.anterior is None:
             return '[]'
