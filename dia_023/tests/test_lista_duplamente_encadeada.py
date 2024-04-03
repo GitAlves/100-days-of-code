@@ -7,7 +7,7 @@ class TestandoNoDuplo(unittest.TestCase):
         self.no_unico = Produto('Celular')
 
     def testando_insercao_de_produto(self):
-        self.assertEqual(self.no_unico, 'Celular')
+        self.assertEqual(self.no_unico.produto, 'Celular')
 
     def testando_se_a_lista_criada_e_correta(self):
-        self.assertEqual(print(self.no_unico), 'None <-> Celular <-> None')
+        self.assertEqual(str(self.no_unico), 'None <-> Celular <-> None')
