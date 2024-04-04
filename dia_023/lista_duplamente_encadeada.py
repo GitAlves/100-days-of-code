@@ -10,3 +10,10 @@ class Produto:
             self.produto,
             self.proximo
         )
+
+
+class ListaDuplamenteEncadeada:
+    def __init__(self):
+        self.inicio = None
+        self.fim = None
+        self.tamanho = 0
