@@ -2,7 +2,7 @@ import unittest
 from .test_lista_duplamente_encadeada import Produto
 
 
-class Testando_no_duplo(unittest.TestCase):
+class TestandoNoDuplo(unittest.TestCase):
     def setUp(self):
         self.elemento_duplo = Produto('Celular')
 
