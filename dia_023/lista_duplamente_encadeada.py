@@ -20,3 +20,8 @@ class ListaDuplamenteEncadeada:
 
     def __len__(self):
         return self.tamanho
+
+    def adicionar_produto_a_lista_vazia(self, produto):
+        novo_produto = Produto(produto)
+        self.inicio = novo_produto
+        self.fim = novo_produto
