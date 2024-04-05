@@ -17,3 +17,6 @@ class ListaDuplamenteEncadeada:
         self.inicio = None
         self.fim = None
         self.tamanho = 0
+
+    def __len__(self):
+        return self.tamanho
