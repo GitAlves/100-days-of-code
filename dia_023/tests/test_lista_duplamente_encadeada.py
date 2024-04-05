@@ -14,3 +14,7 @@ class TestandoListaDuplamenteEncadeada(unittest.TestCase):
 
     def testando_se_o_tamanho_da_lista_e_zero_quando_criada(self):
         self.assertEqual(len(self.lista_inicial), 0)
+
+    def testando_se_o_produto_esta_sendo_adicionado_a_lista_vazia(self):
+        self.lista_inicial.adicionar_produto_a_lista_vazia('Celular')
+        self.assertEqual(self.lista_inicial.inicio.produto, 'Celular')
