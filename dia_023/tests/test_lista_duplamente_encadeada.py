@@ -26,3 +26,7 @@ class TestandoListaDuplamenteEncadeada(unittest.TestCase):
     def testando_a_estrutura_da_lista_quando_um_produto_e_adicionado(self):
         self.lista_inicial.adicionar_produto_a_lista_vazia('Celular')
         self.assertEqual(str(self.lista_inicial.inicio), 'None <-> Celular <-> None')  # noqa: E501;
+
+    def testando_se_a_cabeca_da_lista_e_igual_a_sua_calda(self):
+        self.lista_inicial.adicionar_produto_a_lista_vazia('Celular')
+        self.assertIs(self.lista_inicial.inicio, self.lista_inicial.fim)
