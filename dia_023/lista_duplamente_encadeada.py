@@ -26,3 +26,7 @@ class ListaDuplamenteEncadeada:
         self.inicio = novo_produto
         self.fim = novo_produto
         self.tamanho += 1
+
+    def adicionar_produto_ao_inicio_da_lista(self, produto):
+        if self.tamanho == 0:
+            return self.adicionar_produto_a_lista_vazia('Celular')
