@@ -25,3 +25,4 @@ class ListaDuplamenteEncadeada:
         novo_produto = Produto(produto)
         self.inicio = novo_produto
         self.fim = novo_produto
+        self.tamanho += 1
