@@ -22,3 +22,7 @@ class TestandoListaDuplamenteEncadeada(unittest.TestCase):
     def testando_se_o_tamanho_da_lista_vira_um_ao_se_adicionar_o_primeiro_produto(self):  # noqa: E501;
         self.lista_inicial.adicionar_produto_a_lista_vazia('Celular')
         self.assertEqual(self.lista_inicial.tamanho, 1)
+
+    def testando_a_estrutura_da_lista_quando_um_produto_e_adicionado(self):
+        self.lista_inicial.adicionar_produto_a_lista_vazia('Celular')
+        self.assertEqual(str(self.lista_inicial.inicio), 'None <-> Celular <-> None')  # noqa: E501;
