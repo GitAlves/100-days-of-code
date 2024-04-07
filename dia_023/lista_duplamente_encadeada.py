@@ -35,3 +35,5 @@ class ListaDuplamenteEncadeada:
             novo_no.proximo = self.inicio
             novo_no.anterior = None
             self.inicio = novo_no
+            self.fim = novo_no
+            self.tamanho += 1
