@@ -37,3 +37,14 @@ class ListaDuplamenteEncadeada:
             self.inicio = novo_no
             self.fim = novo_no
             self.tamanho += 1
+
+    def adicionar_produto_ao_fim_da_lista(self, produto):
+        if self.tamanho == 0:
+            return self.adicionar_produto_a_lista_vazia(produto)
+        else:
+            novo_no = Produto(produto)
+            novo_no.anterior = self.fim
+            novo_no.proximo = None
+            self.fim = novo_no
+            self.inicio = novo_no
+            self.tamanho += 1
