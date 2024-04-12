@@ -70,4 +70,4 @@ class ListaDuplamenteEncadeada:
             self.fim = variavel
             self.tamanho += 1
         else:
-            return 'O produto que ficará antes do novo produto nunca existiu na lista'  # noqa: E501;
+            return 'Insira um produto cadastrado para poder adicionar o novo produto!'  # noqa: E501;
