@@ -48,3 +48,23 @@ class ListaDuplamenteEncadeada:
             self.fim = novo_no
             self.inicio = novo_no
             self.tamanho += 1
+
+    def adicionar_produto_apos_um_certo_produto(self, produto_cadastrado, novo_produto):  # noqa: E501;
+        if produto_cadastrado in str(self.inicio):
+            lista_copia = self.inicio
+            variavel = ListaDuplamenteEncadeada()
+
+            while lista_copia:
+                if str(lista_copia.produto) == produto_cadastrado:
+                    variavel.adicionar_produto_ao_inicio_da_lista(novo_produto)
+                    variavel.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+                else:
+                    variavel.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+
+                lista_copia = lista_copia.anterior
+
+            self.inicio = variavel
+            self.fim = variavel
+            self.tamanho += 1
+        else:
+            return 'O produto que ficará antes do novo produto nunca existiu na lista'  # noqa: E501;
