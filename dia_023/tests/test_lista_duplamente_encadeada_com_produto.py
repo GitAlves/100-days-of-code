@@ -27,6 +27,29 @@ class TestandoListaComProduto(unittest.TestCase):
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.assertIs(len(self.lista_inicial), 2)
 
-    def testando_se_a_cabeca_da_lista_e_igual_ao_seu_cauda_apos_adicionar_um_produto_ao_fim_da_lista(self):  # noqa: E501;
+    def testando_se_a_cabeca_da_lista_fica_igual_a_sua_cauda_apos_adicionar_um_produto_ao_fim_da_lista(self):  # noqa: E501;
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.assertIs(self.lista_inicial.fim, self.lista_inicial.inicio)  # noqa: E501;
+
+    def testando_se_o_metodo_atualiza_a_lista_quando_o_produto_pesquisado_existe(self):  # noqa: E501;
+        self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
+        self.lista_inicial.adicionar_produto_apos_um_certo_produto('Celular', 'Carregador')  # noqa: E501;
+        self.assertEqual(
+            'None <-> Celular <-> None <-> Carregador <-> None <-> Fone <-> None',  # noqa: E501;
+            str(self.lista_inicial.inicio)
+        )
+
+    def testando_se_metodo_retorna_um_aviso_quando_o_produto_pesquisado_nao_existe(self):  # noqa: E501;
+        resposta = self.lista_inicial.adicionar_produto_apos_um_certo_produto(  # noqa: E501;
+            'Telefone',
+            'Carregador'
+        )
+        self.assertEqual(
+            resposta,
+            'O produto que ficará antes do novo produto nunca existiu na lista'
+        )
+
+    def testando_se_o_tamanho_da_lista_vira_tres_quando_um_produto_e_adicionado_apos_um_certo_item(self):  # noqa: E501;
+        self.lista_inicial.adicionar_produto_ao_inicio_da_lista('Fone')
+        self.lista_inicial.adicionar_produto_apos_um_certo_produto('Fone', 'Carregador')  # noqa: E501;
+        self.assertIs(len(self.lista_inicial), 3)
