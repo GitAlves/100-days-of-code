@@ -46,7 +46,7 @@ class TestandoListaComProduto(unittest.TestCase):
         )
         self.assertEqual(
             resposta,
-            'O produto que ficará antes do novo produto nunca existiu na lista'
+            'Insira um produto cadastrado para poder adicionar o novo produto!'
         )
 
     def testando_se_o_tamanho_da_lista_vira_tres_quando_um_produto_e_adicionado_apos_um_certo_item(self):  # noqa: E501;
