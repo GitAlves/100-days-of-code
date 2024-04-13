@@ -31,7 +31,7 @@ class TestandoListaComProduto(unittest.TestCase):
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.assertIs(self.lista_inicial.fim, self.lista_inicial.inicio)  # noqa: E501;
 
-    def testando_se_o_metodo_atualiza_a_lista_quando_o_produto_pesquisado_existe(self):  # noqa: E501;
+    def testando_se_o_metodo_o_novo_produto_e_adicionado_depois_do_produto_certo(self):  # noqa: E501;
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.lista_inicial.adicionar_produto_apos_um_certo_produto('Celular', 'Carregador')  # noqa: E501;
         self.assertEqual(
