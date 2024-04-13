@@ -31,7 +31,7 @@ class TestandoListaComProduto(unittest.TestCase):
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.assertIs(self.lista_inicial.fim, self.lista_inicial.inicio)  # noqa: E501;
 
-    def testando_se_o_metodo_o_novo_produto_e_adicionado_depois_do_produto_certo(self):  # noqa: E501;
+    def testando_se_o_novo_produto_e_adicionado_depois_do_produto_certo(self):
         self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
         self.lista_inicial.adicionar_produto_apos_um_certo_produto('Celular', 'Carregador')  # noqa: E501;
         self.assertEqual(
@@ -53,3 +53,30 @@ class TestandoListaComProduto(unittest.TestCase):
         self.lista_inicial.adicionar_produto_ao_inicio_da_lista('Fone')
         self.lista_inicial.adicionar_produto_apos_um_certo_produto('Fone', 'Carregador')  # noqa: E501;
         self.assertIs(len(self.lista_inicial), 3)
+
+    def testando_se_o_novo_produto_e_adicionado_antes_do_produto_certo(self):
+        self.lista_inicial.adicionar_produto_ao_fim_da_lista('Fone')
+        self.lista_inicial.adicionar_produto_ao_fim_da_lista('Carregador')
+        self.lista_inicial.adicionar_produto_antes_de_um_certo_produto('Carregador', 'Capinha')  # noqa: E501;
+        self.assertEqual(
+            'None <-> Celular <-> None <-> Fone <-> None <-> Capinha <-> None <-> Carregador <-> None',  # noqa: E501;
+            str(self.lista_inicial.inicio)
+        )
+
+    def testando_se_quando_um_produto_que_nao_existe_e_usado_a_mensagem_certa_e_exibida(self):  # noqa: E501;
+        mensagem = self.lista_inicial.adicionar_produto_antes_de_um_certo_produto(  # noqa: E501;
+            'Xiaomi',
+            'Chip'
+        )
+        self.assertEqual(
+            mensagem,
+            'Insira um produto cadastrado para poder adicionar o novo produto!'
+        )
+
+    def testando_se_o_tamanho_da_lista_cresce_quando_um_novo_produto_e_adicionado_antes_de_um_existente(self):  # noqa: E501;
+        self.lista_inicial.adicionar_produto_ao_inicio_da_lista('Fone')
+        self.lista_inicial.adicionar_produto_antes_de_um_certo_produto(
+            'Celular',
+            'Carregador'
+        )
+        self.assertEqual(len(self.lista_inicial), 3)
