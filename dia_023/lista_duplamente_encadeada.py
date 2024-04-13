@@ -55,19 +55,40 @@ class ListaDuplamenteEncadeada:
     def adicionar_produto_apos_um_certo_produto(self, produto_cadastrado, novo_produto):  # noqa: E501;
         if produto_cadastrado in str(self.inicio):
             lista_copia = self.inicio
-            variavel = ListaDuplamenteEncadeada()
+            nova_lista = ListaDuplamenteEncadeada()
 
             while lista_copia:
                 if str(lista_copia.produto) == produto_cadastrado:
-                    variavel.adicionar_produto_ao_inicio_da_lista(novo_produto)
-                    variavel.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(novo_produto)  # noqa: E501;
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
                 else:
-                    variavel.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
 
                 lista_copia = lista_copia.anterior
 
-            self.inicio = variavel
-            self.fim = variavel
+            self.inicio = nova_lista
+            self.fim = nova_lista
+            self.tamanho += 1
+        else:
+            return 'Insira um produto cadastrado para poder adicionar o novo produto!'  # noqa: E501;
+
+    def adicionar_produto_antes_de_um_certo_produto(self, produto_cadastrado, novo_produto):  # noqa: E501;
+        if produto_cadastrado in str(self.inicio):
+            lista_copia = self.inicio
+            nova_lista = ListaDuplamenteEncadeada()
+
+            while lista_copia:
+                if str(lista_copia.produto) == produto_cadastrado:
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(novo_produto)  # noqa: E501;
+                    print(nova_lista)
+                else:
+                    nova_lista.adicionar_produto_ao_inicio_da_lista(lista_copia.produto)  # noqa: E501;
+
+                lista_copia = lista_copia.anterior
+
+            self.inicio = nova_lista
+            self.final = nova_lista
             self.tamanho += 1
         else:
             return 'Insira um produto cadastrado para poder adicionar o novo produto!'  # noqa: E501;
