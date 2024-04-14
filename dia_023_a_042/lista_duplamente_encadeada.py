@@ -92,3 +92,13 @@ class ListaDuplamenteEncadeada:
             self.tamanho += 1
         else:
             return 'Insira um produto cadastrado para poder adicionar o novo produto!'  # noqa: E501;
+
+    def remover_o_ultimo_produto_da_lista(self):
+        if self.tamanho > 0:
+            lista_antiga = self.inicio
+            nova_lista = lista_antiga.anterior
+            self.inicio = nova_lista
+            self.fim = nova_lista
+            self.tamanho -= 1
+        else:
+            return 'A lista está vazia! Não há o que remover.'
