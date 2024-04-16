@@ -24,3 +24,22 @@ class TestandoARemocaoDeItensDaListaDupla(unittest.TestCase):
     def testando_se_o_tamanho_da_lista_diminui_quando_o_ultimo_item_e_removido(self):  # noqa: E501;
         self.lista_inicial.remover_o_ultimo_produto_da_lista()
         self.assertEqual(len(self.lista_inicial), 2)
+
+    def testando_se_primeiro_produto_esta_sendo_removido_da_lista(self):
+        self.lista_inicial.remover_o_primeiro_elemento_da_lista()
+        self.assertEqual(
+            str(self.lista_inicial),
+            'None <-> Celular <-> None <-> Carregador <-> None'
+        )
+
+    def testando_se_a_mensagem_aparece_quando_se_tenta_excluir_o_primeiro_elemento_de_uma_lista_vazia(self):  # noqa: E501;
+        self.outra_lista = ListaDuplamenteEncadeada()
+        mensagem = self.outra_lista.remover_o_primeiro_elemento_da_lista()
+        self.assertEqual(
+            mensagem,
+            'A lista está vazia! Não há o que remover.'
+        )
+
+    def testando_se_o_tamanho_da_lista_diminui_quando_o_primeiro_elemento_e_substituido(self):  # noqa: E501;
+        self.lista_inicial.remover_o_primeiro_elemento_da_lista()
+        self.assertEqual(len(self.lista_inicial), 2)
