@@ -24,6 +24,34 @@ class ListaDuplamenteEncadeada:
     def __repr__(self):
         return '%s' % (self.inicio)
 
+    def reverter_para_o_final(self):
+        if self.inicio.anterior is None:
+            lista_crescente = ListaDuplamenteEncadeada()
+            lista_atual = self.inicio
+
+            while lista_atual:
+                lista_crescente.adicionar_produto_ao_fim_da_lista(lista_atual.produto)  # noqa: E501;
+                lista_atual = lista_atual.proximo
+
+            self.inicio = lista_crescente
+            self.fim = lista_crescente
+        else:
+            print('A lista já está no último elemento!')
+
+    def reverter_para_o_comeco(self):
+        if self.inicio.proximo is None:
+            lista_decrescente = ListaDuplamenteEncadeada()  # noqa: F841;
+            lista_atual = self.inicio
+
+            while lista_atual:
+                lista_decrescente.adicionar_produto_ao_inicio_da_lista(lista_atual.produto)  # noqa: E501;
+                lista_atual = lista_atual.anterior
+
+            self.inicio = lista_decrescente
+            self.fim = lista_decrescente
+        else:
+            print('A lista já está no primeiro elemento!')
+
     def adicionar_produto_a_lista_vazia(self, produto):
         novo_produto = Produto(produto)
         self.inicio = novo_produto
