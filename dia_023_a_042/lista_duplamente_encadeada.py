@@ -40,7 +40,7 @@ class ListaDuplamenteEncadeada:
 
     def reverter_para_o_comeco(self):
         if self.inicio.proximo is None:
-            lista_decrescente = ListaDuplamenteEncadeada()  # noqa: F841;
+            lista_decrescente = ListaDuplamenteEncadeada()
             lista_atual = self.inicio
 
             while lista_atual:
@@ -133,10 +133,15 @@ class ListaDuplamenteEncadeada:
 
     def remover_o_primeiro_elemento_da_lista(self):
         if self.tamanho > 0:
-            lista_antiga = self.inicio
-            nova_lista = lista_antiga.proximo
-            self.inicio = nova_lista
-            self.fim = nova_lista
-            self.tamanho -= 1
+            lista = self.inicio
+
+            while lista:
+                print(lista.produto)
+                lista = lista.proximo
+            # lista_antiga = self.inicio
+            # nova_lista = lista_antiga.proximo
+            # self.inicio = nova_lista
+            # self.fim = nova_lista
+            # self.tamanho -= 1
         else:
             return 'A lista está vazia! Não há o que remover.'
