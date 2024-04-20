@@ -8,7 +8,12 @@ class Produto:
         self.proximo = None
 
     def __repr__(self):
-        return '%s %s' % (self.codigo_de_barras, self.nome)
+        return '%s %s %s %s' % (
+            self.codigo_de_barras,
+            self.nome,
+            self.preco,
+            self.quantidade,
+            )
 
 
 class ListaDeProdutos:
@@ -32,61 +37,31 @@ class ListaDeProdutos:
     def remover_produto(self, codigo):
         if self.inicio is None:
             return 'A lista está vazia! Não há o que remover'
-        elif codigo in str(self.inicio):
-            print('Cheguei')
+        else:
             lista_copia = self.inicio
-            nova_lista = ListaDeProdutos()
 
             while lista_copia:
-                if lista_copia.codigo_de_barras == codigo:
-                    print('Cheguei')
-                    pass
-                else:
-                    nova_lista.adicionar_produto(
-                        lista_copia.nome,
-                        lista_copia.codigo_de_barras,
-                        lista_copia.preco,
-                        lista_copia.quantidade
-                    )
+                if codigo in str(lista_copia):
+                    lista_copia.anterior.proximo = lista_copia.proximo
+                    lista_copia.proximo.anterior = lista_copia.anterior
 
                 lista_copia = lista_copia.proximo
 
-            nova_lista.listar_produtos()
-        else:
-            return 'Produto não encontrado!'
+            print(lista_copia)
+
+            return 'Tudo certo'
 
     def atualizar_quantidade(self, nome, nova_quantidade):
         if self.inicio is None:
             return 'Lista vazia! Não há produtos para serem atualizados.'
-        elif nome in str(self.inicio):
+        else:
             lista_copia = self.inicio
-            nova_lista = ListaDeProdutos()
 
             while lista_copia:
-                if nome == str(lista_copia.nome):
-                    nova_lista.adicionar_produto(
-                        lista_copia.nome,
-                        lista_copia.codigo_de_barras,
-                        lista_copia.preco,
-                        nova_quantidade
-                    )
-                    print('Oi!!!')
-                else:
-                    nova_lista.adicionar_produto(
-                        lista_copia.nome,
-                        lista_copia.codigo_de_barras,
-                        lista_copia.preco,
-                        lista_copia.quantidade
-                    )
+                if nome in str(lista_copia):
+                    lista_copia.quantidade = nova_quantidade
 
                 lista_copia = lista_copia.proximo
-
-            nova_lista.listar_produtos()
-
-            self.inicio = nova_lista
-            self.fim = nova_lista
-        else:
-            return 'Esse produto não foi encontrado no estoque.'
 
     def listar_produtos(self):
         lista = self.inicio
@@ -112,6 +87,6 @@ print(lista_de_produtos.atualizar_quantidade('Celular', 23))
 
 lista_de_produtos.listar_produtos()
 
-# lista_de_produtos.remover_produto('0004')
+print(lista_de_produtos.remover_produto('0003'))
 
-# lista_de_produtos.listar_produtos()
+lista_de_produtos.listar_produtos()
