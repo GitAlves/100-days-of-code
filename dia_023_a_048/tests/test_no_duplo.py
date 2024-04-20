@@ -1,5 +1,5 @@
 import unittest
-from dia_023.lista_duplamente_encadeada import Produto
+from dia_023_a_048.lista_duplamente_encadeada import Produto
 
 
 class TestandoNoDuplo(unittest.TestCase):

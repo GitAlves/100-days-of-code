@@ -1,5 +1,5 @@
 import unittest
-from dia_023_a_042.lista_duplamente_encadeada import ListaDuplamenteEncadeada
+from dia_023_a_048.lista_duplamente_encadeada import ListaDuplamenteEncadeada
 
 
 class TestandoListaComProduto(unittest.TestCase):
