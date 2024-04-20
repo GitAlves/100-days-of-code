@@ -34,22 +34,22 @@ class ListaDeProdutos:
             novo_produto.anterior = self.fim
             self.fim = novo_produto
 
-    def remover_produto(self, codigo):
+        print(f'{nome} adicionado ao estoque com sucesso!\n')
+
+    def remover_produto(self, nome):
         if self.inicio is None:
             return 'A lista está vazia! Não há o que remover'
         else:
             lista_copia = self.inicio
 
             while lista_copia:
-                if codigo in str(lista_copia):
+                if nome in str(lista_copia):
                     lista_copia.anterior.proximo = lista_copia.proximo
                     lista_copia.proximo.anterior = lista_copia.anterior
 
                 lista_copia = lista_copia.proximo
 
-            print(lista_copia)
-
-            return 'Tudo certo'
+            print(f'Produto {nome} removido do estoque com sucesso!\n')
 
     def atualizar_quantidade(self, nome, nova_quantidade):
         if self.inicio is None:
@@ -62,6 +62,8 @@ class ListaDeProdutos:
                     lista_copia.quantidade = nova_quantidade
 
                 lista_copia = lista_copia.proximo
+
+        print(f'Agora a quantidade do produto {nome} é de {nova_quantidade}!!\n')  # noqa: E501;
 
     def listar_produtos(self):
         lista = self.inicio
@@ -81,12 +83,11 @@ lista_de_produtos.adicionar_produto('Fone Bluetooth', '0002', 249.90, 100)
 lista_de_produtos.adicionar_produto('Carregador', '0003', 54.99, 50)
 lista_de_produtos.adicionar_produto('Capinha', '0004', 25.99, 100)
 
-lista_de_produtos.listar_produtos()
-
-print(lista_de_produtos.atualizar_quantidade('Celular', 23))
 
 lista_de_produtos.listar_produtos()
 
-print(lista_de_produtos.remover_produto('0003'))
+lista_de_produtos.atualizar_quantidade('Celular', 23)
+lista_de_produtos.listar_produtos()
 
+lista_de_produtos.remover_produto('Carregador')
 lista_de_produtos.listar_produtos()
