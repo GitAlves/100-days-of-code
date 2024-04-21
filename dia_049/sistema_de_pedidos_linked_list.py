@@ -33,12 +33,9 @@ class FilaDePedidos:
                     break
                 fila = fila.proximo_pedido
 
-
-fila = FilaDePedidos()
-
-fila.adicionar_pedido('001', 'Adalberto', 'Moccha', 23.90)
-fila.adicionar_pedido('002', 'Joanna', 'Capuccino', 15.90)
-fila.adicionar_pedido('003', 'Joaquim', 'Ice Tea', 13.90)
-fila.adicionar_pedido('004', 'Mustafá', 'Nutella Cake - Piece', 15.90)
-
-print(f'Fila de pedidos: {fila.pedido}')
+    def remover_primeiro_pedido(self):
+        if self.pedido is None:
+            print('Sem pedidos na fila. Bora descansar ;)')
+        else:
+            fila = self.pedido
+            self.pedido = fila.proximo_pedido
