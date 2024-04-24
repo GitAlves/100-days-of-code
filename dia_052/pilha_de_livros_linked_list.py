@@ -12,6 +12,9 @@ class PilhaDeLivros:
     def __init__(self):
         self._livro_atual = None
 
+    def __repr__(self):
+        return '%s' % (self._livro_atual)
+
     def adicionar_livro(self, livro, num_paginas):
         novo_livro = Livro(livro, num_paginas)
         if self._livro_atual is None:
