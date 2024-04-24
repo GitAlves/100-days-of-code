@@ -6,3 +6,8 @@ class Livro:
 
     def __repr__(self):
         return '%s, %s ->  %s' % (self._titulo, self._num_paginas, self._titulo_anterior)
+
+
+class PilhaDeLivros:
+    def __init__(self):
+        self._livro_atual = None
