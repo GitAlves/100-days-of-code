@@ -5,7 +5,10 @@ class Livro:
         self._titulo_anterior = None
 
     def __repr__(self):
-        return '%s, %s ->  %s' % (self._titulo, self._num_paginas, self._titulo_anterior)
+        return '%s, %s ->  %s' % (
+            self._titulo,
+            self._num_paginas,
+            self._titulo_anterior)
 
 
 class PilhaDeLivros:
@@ -13,7 +16,10 @@ class PilhaDeLivros:
         self._livro_atual = None
 
     def __repr__(self):
-        return '%s' % (self._livro_atual)
+        return '%s, %s ->\n\n %s' % (
+            self._livro_atual._titulo,
+            self._livro_atual._num_paginas,
+            self._livro_atual._titulo_anterior)
 
     def adicionar_livro(self, livro, num_paginas):
         novo_livro = Livro(livro, num_paginas)
@@ -23,3 +29,10 @@ class PilhaDeLivros:
             pilha = self._livro_atual
             novo_livro._titulo_anterior = pilha
             self._livro_atual = novo_livro
+
+    def remover_livro(self):
+        if self._livro_atual is None:
+            print('A pilha está vazia! Não há o que remover.')
+        else:
+            pilha = self._livro_atual
+            self._livro_atual = pilha._titulo_anterior
