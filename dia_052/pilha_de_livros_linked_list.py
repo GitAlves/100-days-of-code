@@ -40,3 +40,12 @@ class PilhaDeLivros:
     def mostrar_ultimo_livro(self):
         pilha = self._livro_atual
         print(f'Livro: {pilha._titulo} \nNúmero de páginas: {pilha._num_paginas}\n')  # noqa: E501;
+
+    def mostrar_livros(self):
+        print('Título               Nº de páginas\n')
+
+        pilha = self._livro_atual
+        while pilha:
+            print(f'{pilha._titulo:25} {pilha._num_paginas}')
+
+            pilha = pilha._titulo_anterior
