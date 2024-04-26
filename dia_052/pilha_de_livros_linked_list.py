@@ -16,7 +16,7 @@ class PilhaDeLivros:
         self._livro_atual = None
 
     def __repr__(self):
-        return '%s, %s ->\n\n %s' % (
+        return '%s, %s -> %s' % (
             self._livro_atual._titulo,
             self._livro_atual._num_paginas,
             self._livro_atual._titulo_anterior)
@@ -36,3 +36,7 @@ class PilhaDeLivros:
         else:
             pilha = self._livro_atual
             self._livro_atual = pilha._titulo_anterior
+
+    def mostrar_ultimo_livro(self):
+        pilha = self._livro_atual
+        print(f'Livro: {pilha._titulo} \nNúmero de páginas: {pilha._num_paginas}\n')  # noqa: E501;
