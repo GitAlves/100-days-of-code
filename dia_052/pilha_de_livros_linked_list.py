@@ -46,6 +46,9 @@ class PilhaDeLivros:
 
         pilha = self._livro_atual
         while pilha:
+            if pilha._titulo_anterior is None:
+                print(f'{pilha._titulo:25} {pilha._num_paginas} <- Base da pilha')  # noqa: E501;
+                break
             print(f'{pilha._titulo:25} {pilha._num_paginas}')
 
             pilha = pilha._titulo_anterior
