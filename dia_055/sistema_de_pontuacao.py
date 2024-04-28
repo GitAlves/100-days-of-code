@@ -12,3 +12,11 @@ class Jogo:
             self._jogadores[
                 "jogador" + str(len(self._jogadores) + 1)
                 ] = {'nome': nome, 'pontos': pontos}
+
+    def atualizar_pontuacao(self, jogador, nova_pontuacao):
+        if self._jogadores is not None:
+            for chave in self._jogadores.values():
+                if chave['nome'] == jogador:
+                    chave['pontos'] = nova_pontuacao
+        else:
+            print('Não há jogadores cadastrados no sistema!')
