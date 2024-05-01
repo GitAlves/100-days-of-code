@@ -24,7 +24,7 @@ class Jogo:
         elif self._jogadores is None:
             print('Não há jogadores cadastrados no sistema!')
         else:
-            print('Este jogador ainda não foi cadastrado!')
+            print(f'"{nome_jogador}" ainda não foi cadastrado! no sistema')
 
     def remover_jogador(self, nome):
         if nome in str(self._jogadores):
@@ -35,4 +35,13 @@ class Jogo:
         elif self._jogadores is None:
             print('Não há jogadores cadastrados no sistema!')
         else:
-            print('Este jogador ainda não foi cadastrado!')
+            print(f'"{nome}" ainda não foi cadastrado no sistema!')
+
+    def apresentar_jogadores(self):
+        if self._jogadores is not None:
+            for jogador in self._jogadores:
+                print(f'\n\n-------- {jogador} ------------\n')
+                print(f"Nome: {self._jogadores[jogador]['nome']}\n")
+                print(f"Pontuação: {self._jogadores[jogador]['pontos']}\n\n")
+        else:
+            print('Não há jogadores para serem mostrados!')
