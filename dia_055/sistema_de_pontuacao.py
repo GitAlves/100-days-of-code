@@ -10,10 +10,10 @@ class Jogo:
 
     def adicionar_novo_jogador(self, nome, pontos):
         if len(self._jogadores) == 0:
-            self._jogadores["jogador1"] = {'nome': nome, 'pontos': pontos}
+            self._jogadores["Jogador1"] = {'nome': nome, 'pontos': pontos}
         else:
             self._jogadores[
-                "jogador" + str(len(self._jogadores) + 1)
+                "Jogador" + str(len(self._jogadores) + 1)
                 ] = {'nome': nome, 'pontos': pontos}
 
     def atualizar_pontuacao(self, nome_jogador, nova_pontuacao):
