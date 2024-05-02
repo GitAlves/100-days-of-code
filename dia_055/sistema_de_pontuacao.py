@@ -45,3 +45,8 @@ class Jogo:
                 print(f"Pontuação: {self._jogadores[jogador]['pontos']}\n\n")
         else:
             print('Não há jogadores para serem mostrados!')
+
+    def apresentar_vencedor(self):
+        vencedor = max(self._jogadores)
+        nome_vencedor = self._jogadores[vencedor]['nome']
+        print(f'{nome_vencedor} é o vencedor da competição!')
