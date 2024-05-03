@@ -16,6 +16,8 @@ class Jogo:
                 "Jogador" + str(len(self._jogadores) + 1)
                 ] = {'nome': nome, 'pontos': pontos}
 
+        print(f'\nJogador "{nome}" com {pontos} pontos adicionado com sucesso!\n')  # noqa: E501;
+
     def atualizar_pontuacao(self, nome_jogador, nova_pontuacao):
         if nome_jogador in str(self._jogadores):
             for jogador in self._jogadores.values():
@@ -47,6 +49,12 @@ class Jogo:
             print('Não há jogadores para serem mostrados!')
 
     def apresentar_vencedor(self):
-        vencedor = max(self._jogadores)
-        nome_vencedor = self._jogadores[vencedor]['nome']
-        print(f'{nome_vencedor} é o vencedor da competição!')
+        pontuacao_vencedor = 0
+        vencedor = ''
+
+        for jogador in self._jogadores:
+            if self._jogadores[jogador]['pontos'] > pontuacao_vencedor:
+                pontuacao_vencedor = self._jogadores[jogador]['pontos']
+                vencedor = self._jogadores[jogador]['nome']
+
+        print(f'O vencedor da competição é {vencedor} com {pontuacao_vencedor} pontos.')  # noqa: E501;
