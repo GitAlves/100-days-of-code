@@ -10,3 +10,8 @@ class Node:
         self.esquerda = None
         self.direita = None
         self.produto = produto
+
+
+class Raiz:
+    def __init__(self):
+        self.raiz = None
