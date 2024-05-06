@@ -15,3 +15,9 @@ class Node:
 class Raiz:
     def __init__(self):
         self.raiz = None
+
+    def inserir(self, produto):
+        if self.raiz is None:
+            self.raiz = Node(produto)
+        else:
+            self._inserir_recursivo(produto, self.raiz)
