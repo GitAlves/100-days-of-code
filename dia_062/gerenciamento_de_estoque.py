@@ -52,9 +52,9 @@ class Raiz:
         if no is None or no.produto.id == codigo:
             print(f'ID {codigo}: "{no.produto.nome} com {no.produto.quantidade} unidades" encontrado')  # noqa: E501;
         elif codigo < no.produto.id:
-            self._buscar_item(codigo, no.esquerdo)
+            self._buscar_item_recursivo(codigo, no.esquerdo)
         elif codigo > no.produto.id:
-            self._buscar_item(codigo, no.direito)
+            self._buscar_item_recursivo(codigo, no.direito)
 
 
 produto1 = Produto(1, 'Ruffles', 50)
