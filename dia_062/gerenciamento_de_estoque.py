@@ -39,8 +39,8 @@ class Raiz:
             Assim, os dados desse novo produto irão substituir os
             do produto antigo que possuía o mesmo ID.
             '''
-            no.produto = produto.nome
-            no.quantidade = produto.quantidade
+            no.produto.nome = produto.nome
+            no.produto.quantidade = produto.quantidade
 
 
 produto1 = Produto(1, 'Ruffles', 50)
