@@ -11,3 +11,17 @@ def chamar_fibonacci(vezes):
         atual = auxiliar
 
         vezes -= 1
+
+
+resposta = 'N'
+while resposta != 'S':
+    quant_vezes = int(input('\n\nDigite a quantidade de números da sequência de Fibonacci que você quer ver: '))  # noqa: E501;
+
+    print('\n\n')
+    chamar_fibonacci(quant_vezes)
+    print('\n')
+
+    resposta = input('\n\nGostaria de parar o processo [S / N]: ')
+
+
+print('\n\nFoi um prazer!\n\n')
