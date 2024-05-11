@@ -1,16 +1,12 @@
-def chamar_fibonacci(vezes):
-    anterior = 0
-    atual = 1
-    auxiliar = 0
+def chamar_fibonacci(vezes, anterior=0, atual=1):
+    print(atual, end=' ')
 
-    while vezes:
-        print(atual, end=' ')
+    atual = atual + anterior
+    anterior = atual - anterior
+    vezes -= 1
 
-        auxiliar = anterior + atual
-        anterior = atual
-        atual = auxiliar
-
-        vezes -= 1
+    if vezes > 0:
+        chamar_fibonacci(vezes, anterior, atual)
 
 
 resposta = 'N'
