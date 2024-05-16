@@ -1,7 +1,7 @@
 def numero_primo(numero):
     if numero <= 1:
         return f'\n{numero} não é um número primo.\n'
-    
+
     quant_divisores = list(
         filter(
             lambda divisor: numero % divisor == 0,
