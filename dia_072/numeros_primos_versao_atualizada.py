@@ -8,10 +8,7 @@ def numero_primo(numero):
         )
     )
 
-    if len(quant_divisores) == 2:
-        return f'\n{numero} é um número primo! \nLista divisores: {quant_divisores}\n'  # noqa: E501;
-    else:
-        return f'\n{numero} é um número primo! \nLista divisores: {quant_divisores}\n'  # noqa: E501;
+    return f'\n{numero} é um número primo!' if len(quant_divisores) == 0 else f'\n{numero} não é um número primo!'  # noqa: E501;
 
 
 resposta = 'N'
