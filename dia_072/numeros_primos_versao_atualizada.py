@@ -10,5 +10,14 @@ def numero_primo(numero):
         return f'\n{numero} não é um número primo. \nLista divisores: {quant_divisores}\n'  # noqa: E501;
 
 
-numero_escolhido = int(input('Digite um número inteiro qualquer: '))
-print(numero_primo(numero_escolhido))
+resposta = 'N'
+while resposta != 'S':
+
+    numero = numero_primo(
+        int(input('\n\nDigite um número qualquer: ')))
+
+    print(numero)
+
+    resposta = input('\nGostaria de sair [S/N]: ')
+
+print('\n\nFoi um prazer!!!\n\n')
