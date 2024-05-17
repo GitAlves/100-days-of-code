@@ -1,6 +1,6 @@
 def numero_primo(numero):
     if numero <= 1:
-        return f'\n{numero} não é um número primo.\n'
+        return False
 
     quant_divisores = list(
         filter(
@@ -9,7 +9,7 @@ def numero_primo(numero):
         )
     )
 
-    return f'\n{numero} é um número primo!' if len(quant_divisores) == 2 else f'\n{numero} não é um número primo.'  # noqa: E501;
+    return True if len(quant_divisores) == 2 else False  # noqa: E501;
 
 
 resposta = 'N'
