@@ -17,6 +17,12 @@ def verificar_numero():
         messagebox.showinfo('Resultado', f'{numero} não é um número primo.')
 
 
+def limpar():
+    botao_primo.config(bg='grey')
+    botao_nao_primo.config(bg='grey')
+    entry.delete(0, tk.END)
+
+
 root = tk.Tk()
 root.title('Verificador de números primos')
 
