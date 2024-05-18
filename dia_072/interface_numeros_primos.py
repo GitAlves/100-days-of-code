@@ -1,4 +1,21 @@
 import tkinter as tk
+from tkinter import messagebox
+from numeros_primos_versao_atualizada import numero_primo
+
+
+def verificar_numero():
+    numero = int(entry.get())
+    numero_verificado = numero_primo(numero)
+
+    if numero_verificado is True:
+        botao_primo.config(bg='green')
+        botao_nao_primo.config(bg='grey')
+        messagebox.showinfo('Resultado', f'{numero} é um número primo!')
+    else:
+        botao_nao_primo.config(bg='red')
+        botao_primo.config(bg='grey')
+        messagebox.showinfo('Resultado', f'{numero} não é um número primo.')
+
 
 root = tk.Tk()
 root.title('Verificador de números primos')
