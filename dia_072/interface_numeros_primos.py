@@ -25,6 +25,7 @@ def limpar():
 
 root = tk.Tk()
 root.title('Verificador de números primos')
+root.config(padx=120, pady=100)
 
 label = tk.Label(root, text='Digite um número:')
 label.pack()
