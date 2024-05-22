@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import ttk
 from numeros_primos_versao_atualizada import numero_primo
 
 
@@ -10,11 +10,9 @@ def verificar_numero():
     if numero_verificado is True:
         botao_primo.config(style='Certo.TButton')
         botao_nao_primo.config(style='TButton')
-        messagebox.showinfo('Resultado', f'{numero} é um número primo!')
     else:
         botao_nao_primo.config(style='Errado.TButton')
         botao_primo.config(style='TButton')
-        messagebox.showinfo('Resultado', f'{numero} não é um número primo.')
 
 
 def limpar():
@@ -42,7 +40,7 @@ botao_verificar = ttk.Button(root, text='Verificar', command=verificar_numero)
 botao_verificar.grid(column=2, row=0, padx=5, pady=30)
 
 pergunta_numero_primo = ttk.Label(root, text='Este número é primo?', font='arial 12', background='yellow')  # noqa: E501;
-pergunta_numero_primo.grid(column=1, row=1, padx=5, pady=15)
+pergunta_numero_primo.grid(column=0, row=1, padx=5, pady=15, columnspan=3, sticky='NS')  # noqa: E501;
 
 botao_primo = ttk.Button(root, text='✓', style='TButton', state=tk.DISABLED)
 botao_primo.grid(column=0, row=2, padx=0, pady=0)
@@ -51,6 +49,6 @@ botao_nao_primo = ttk.Button(root, text='✗', style='TButton', state=tk.DISABLE
 botao_nao_primo.grid(column=2, row=2, padx=0, pady=0)
 
 novo_numero = ttk.Button(root, text='Testar outro número', command=limpar)
-novo_numero.grid(column=1, row=3, padx=5, pady=80)
+novo_numero.grid(column=0, row=3, padx=5, pady=80, columnspan=3, sticky='NS')
 
 root.mainloop()
