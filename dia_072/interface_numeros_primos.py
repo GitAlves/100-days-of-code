@@ -25,6 +25,10 @@ def limpar():
     entry.delete(0, tk.END)
 
 
+def apenas_numeros(caracter):
+    return caracter.isdigit() or caracter == ''
+
+
 root = tk.Tk()
 root.title('Verificador de números primos')
 root.geometry('400x300')
@@ -37,7 +41,9 @@ style.configure('Errado.TButton', background='red')
 label = ttk.Label(root, text='Digite um número:', font='arial 12', background='yellow')  # noqa: E501;
 label.grid(column=0, row=0, padx=5, pady=30)
 
-entry = ttk.Entry(root, justify='center')
+validacao = (root.register(apenas_numeros), '%P')
+
+entry = ttk.Entry(root, justify='center', validate='key', validatecommand=validacao)  # noqa: E501;
 entry.grid(column=1, row=0, padx=5, pady=30)
 
 botao_verificar = ttk.Button(root, text='Verificar', command=verificar_numero)
