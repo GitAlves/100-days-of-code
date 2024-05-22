@@ -6,6 +6,8 @@ from numeros_primos_versao_atualizada import numero_primo
 def verificar_numero():
     numero = int(entry.get())
     numero_verificado = numero_primo(numero)
+    entry.config(state=tk.DISABLED)
+    botao_verificar.config(state=tk.DISABLED)
 
     if numero_verificado is True:
         botao_primo.config(style='Certo.TButton')
@@ -18,6 +20,8 @@ def verificar_numero():
 def limpar():
     botao_primo.config(style='TButton')
     botao_nao_primo.config(style='TButton')
+    entry.config(state=tk.ACTIVE)
+    botao_verificar.config(state=tk.ACTIVE)
     entry.delete(0, tk.END)
 
 
