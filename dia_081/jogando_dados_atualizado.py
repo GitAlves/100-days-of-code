@@ -1,15 +1,22 @@
 from random import randint
 
 
-def jogar_dado(lados):
-    return randint(0, lados)
+class Dado:
+    def __init__(self, lados):
+        self._lados = lados
+
+    def modificar_quantidade_lados(self, nova_quantidade):
+        self._lados = nova_quantidade
+
+    def sortear_lado(self):
+        return randint(0, self._lados)
 
 
-quant_lados = int(input('\n\nQuantos lados o dado vai ter: '))
+dado_exemplo = Dado(20)
 
 resp = 'N'
 while resp != 'S':
-    print(f'\n\nNúmero sorteado: {jogar_dado(quant_lados)}')
+    print(f'\n\nNúmero sorteado: {dado_exemplo.sortear_lado()}\n\n')
 
     resp = input('Gostaria de encerrar o programa [S/N]: ')
 
