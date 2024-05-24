@@ -1,8 +1,8 @@
-from random import choice as ch
+from random import randint
 
 
-def jogar_dado():
-    return ch([1, 2, 3, 4, 5, 6])
+def jogar_dado(lados):
+    return randint(0, lados)
 
 
-print(jogar_dado())
+print(jogar_dado(6))
