@@ -18,25 +18,36 @@ dado_exemplo = Dado(20)
 
 resp = 'N'
 while resp != 'S':
-    resp = int(input(
-        '\n\nDigite [1] para sortear um lado do dado.\n'
-        'Digite [2] para modificar a quantidade de dados do lado.\n'
-        'Digite [3] para encerrar o programa.\n'
-        'Digite a sua escolha: '
-        )
-    )
-
-    match resp:
-        case 1:
-            print(f'\n\nNúmero sorteado: {dado_exemplo.sortear_lado}')
-        case 2:
-            nova_quantidade = int(
-                input(
-                    '\n\nDigite quantos lados o novo dado terá: '
-                )
+    try:
+        resp = int(input(
+            '\n\nDigite [1] para sortear um lado do dado.\n'
+            'Digite [2] para modificar a quantidade de dados do lado.\n'
+            'Digite [3] para encerrar o programa.\n'
+            'Digite a sua escolha: '
             )
-            dado_exemplo.modificar_quantidade_lados(nova_quantidade)
-        case 3:
-            resp = 'S'
+        )
+    except ValueError:
+        print('Use números inteiros para prosseguir com o uso do projeto!')
+    else:
+        match resp:
+            case 1:
+                print(f'\n\nNúmero sorteado: {dado_exemplo.sortear_lado}')
+            case 2:
+                while 2 != 'dois':
+                    try:
+                        nova_quantidade = int(
+                            input(
+                                '\n\nDigite quantos lados o novo dado terá: '
+                            )
+                        )
+                    except ValueError:
+                        print('Insira um número inteiro para modificar a quantidade de lados do dado!')  # noqa: E501;
+                    else:
+                        dado_exemplo.modificar_quantidade_lados(nova_quantidade)  # noqa: E501;
+                        break
+            case 3:
+                resp = 'S'
+            case _:
+                print('Use 1, 2 ou três para prosseguir com o uso do projeto!')
 
 print('\n\nAté mais!\n\n')
