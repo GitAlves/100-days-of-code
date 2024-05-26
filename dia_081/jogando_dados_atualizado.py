@@ -27,7 +27,7 @@ while resp != 'S':
             )
         )
     except ValueError:
-        print('Use números inteiros para prosseguir com o uso do projeto!')
+        print('\n\nUse números inteiros para prosseguir com o uso do projeto!')  # noqa: E501;
     else:
         match resp:
             case 1:
@@ -41,7 +41,7 @@ while resp != 'S':
                             )
                         )
                     except ValueError:
-                        print('Insira um número inteiro para modificar a quantidade de lados do dado!')  # noqa: E501;
+                        print('\n\nInsira um número inteiro para modificar a quantidade de lados do dado!')  # noqa: E501;
                     else:
                         dado_exemplo.modificar_quantidade_lados(nova_quantidade)  # noqa: E501;
                         break
