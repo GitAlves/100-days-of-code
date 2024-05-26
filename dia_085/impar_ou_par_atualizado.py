@@ -7,10 +7,24 @@ def impar_ou_par(numero):
 
 sair = 'n'
 while sair != 'y':
-    num_inteiro = int(input('Digite um número: '))
+    try:
+        num_inteiro = int(input('Digite um número: '))
+    except ValueError:
+        print('Insira um número inteiro para ser testado!')
+    else:
+        print(impar_ou_par(num_inteiro))
 
-    print(impar_ou_par(num_inteiro))
+        while True:
+            sair = input('Gostaria de encerrar o programa [y/n]: ')
 
-    sair = input('Gostaria de encerrar o programa [y/n]: ')
+            match sair:
+                case 'y':
+                    sair = 'y'
+                    break
+                case 'n':
+                    sair = 'n'
+                    break
+                case _:
+                    print('Digite [y] para sair ou [n] para continuar!')
 
 print('Foi um prazer!')
