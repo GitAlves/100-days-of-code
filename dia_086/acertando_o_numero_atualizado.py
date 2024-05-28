@@ -17,28 +17,45 @@ class NumeroAleatorio:
 
 
 tentativas = 4
-numero = randint(1, 10)
-while tentativas:
-    try:
-        numero_jogador = int(
-            input(
-                '\n\nInsira um número entre um e dez: '
+numero = NumeroAleatorio()
+resp = 'N'
+while resp != 'S':
+    while tentativas:
+        try:
+            numero_jogador = int(
+                input(
+                    '\n\nInsira um número entre um e dez: '
+                )
             )
-        )
-    except ValueError:
-        print('\n\nUse números inteiros para tentar acertar o número!')
-    else:
-        if numero_jogador > numero:
-            print(f'\n\nDica: O número é menor que {numero_jogador}.')
+        except ValueError:
+            print('\n\nUse números inteiros para tentar acertar o número!')
         else:
-            print(f'\n\nO número é maior que {numero_jogador}.')
+            if numero_jogador > numero.numero:
+                print(f'\n\nDica: O número é menor que {numero_jogador}.')
+            elif numero_jogador < numero.numero:
+                print(f'\n\nO número é maior que {numero_jogador}.')
 
-        if numero_jogador == numero:
-            print(f'\n\n{numero_jogador} era o número certo. Parabéns!\n\n')
-            break
+            if numero_jogador == numero.numero:
+                print(f'\n\n{numero_jogador} era o número certo. Parabéns!\n\n')  # noqa: E501;
+                break
 
-        tentativas -= 1
+            tentativas -= 1
 
-if tentativas == 0 and numero_jogador != numero:
-    print('\n\nAs suas chances acabaram!')
-    print(f'\nO número sorteado foi {numero}.\n\n')
+            if tentativas == 0:
+                print('\n\nAs suas chances acabaram!')
+                print(f'\nO número sorteado foi {numero.numero}.\n\n')
+
+    while True:
+        resp = input('Gostaria de sair do jogo [S/N]: ')
+
+        match resp:
+            case 'S':
+                break
+            case 'N':
+                numero.novo_numero()
+                tentativas = 4
+                break
+            case _:
+                print('\n\nUse [S] para sair ou [N] para continuar jogando\n\n')  # noqa: E501;
+
+print('\n\nFoi um prazer!\n\n')
