@@ -8,6 +8,10 @@ class NumeroAleatorio:
     def comparar_numero(self, numero_jogador):
         return True if numero_jogador == self._numero else False
 
+    @property
+    def numero(self):
+        return self._numero
+
     def novo_numero(self):
         self._numero = randint(1, 10)
 
