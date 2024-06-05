@@ -6,12 +6,14 @@ while escolha != 'S':
             input(
                 '\nInsira até onde você quer saber da tabuada do número: '
             )
-        )
+        ) + 1
     )
 
-    lista_numeros = list(map(lambda x: (numero_escolhido, x, x * numero_escolhido), quantidade))  # noqa: E501;
+    tabuada = list(map(lambda x: (numero_escolhido, x, x * numero_escolhido), quantidade))  # noqa: E501;
 
-    print(lista_numeros)
+    print('\n\n')
+    for elemento in tabuada:
+        print(f'{elemento[0]} x {elemento[1]} = {elemento[2]}')
 
     while True:
         escolha = input('\n\nGostaria de sair [S/N]: ')
