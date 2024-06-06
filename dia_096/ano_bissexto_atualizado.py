@@ -8,11 +8,11 @@ def validador():
 
     if ano % 4 == 0:
         texto_resposta.config(
-            text=f'{ano} {verbo} um ano bissexto!'
+            text=f'O ano {ano} {verbo} bissexto!'
         )
     else:
         texto_resposta.config(
-            text=f'{ano} não {verbo} um ano bissexto!'
+            text=f'O ano {ano} não {verbo} bissexto!'
         )
 
 
