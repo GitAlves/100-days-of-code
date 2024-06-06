@@ -8,37 +8,37 @@ def vez_da_maquina():
 
 def escolhendo_pedra(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        print('Empatou? A pontuação fica com a banca!!!')
+        print('\n\nEmpatou? A pontuação fica com a banca!!!')
         return 0, 0
     elif jogada_maquina == 'papel':
-        print('A máquina ganhou dessa vez :(')
+        print('\n\nA máquina ganhou dessa vez :(')
         return 0, 1
     else:
-        print('Você venceu!')
+        print('\n\nVocê venceu!')
         return 1, 0
 
 
 def escolhendo_papel(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        print('Você venceu!')
+        print('\n\nVocê venceu!')
         return 1, 0
     elif jogada_maquina == 'papel':
-        print('Empatou? A pontuação fica com a banca!!!')
+        print('\n\nEmpatou? A pontuação fica com a banca!!!')
         return 0, 0
     else:
-        print('A máquina ganhou dessa vez :(')
+        print('\n\nA máquina ganhou dessa vez :(')
         return 0, 1
 
 
 def escolhendo_tesoura(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        print('A máquina ganhou dessa vez :(')
+        print('\n\nA máquina ganhou dessa vez :(')
         return 0, 1
     elif jogada_maquina == 'papel':
-        print('Você venceu!')
+        print('\n\nVocê venceu!')
         return 1, 0
     else:
-        print('Empatou? A pontuação fica com a banca!!!')
+        print('\n\nEmpatou? A pontuação fica com a banca!!!')
         return 0, 0
 
 
@@ -53,7 +53,7 @@ while sair != 'S':
     try:
         jogada_do_usuario = int(
             input(
-                '\nDigite [1] para escolher a pedra!'
+                '\n\nDigite [1] para escolher a pedra!'
                 '\nDigite [2] para escolher o papel!'
                 '\nDigite [3] para escolher a tesoura!'
                 '\nEscolha: '
@@ -68,7 +68,7 @@ while sair != 'S':
         except KeyError:
             print('\n\nUse os números [1], [2] ou [3] para escolher a sua jogada!')  # noqa: E501;
         else:
-            print('\nConstatando o resultado...\n')
+            print('\n\nConstatando o resultado...')
             sl(3)
 
             match jogada_do_usuario:
@@ -83,7 +83,7 @@ while sair != 'S':
             pontuacao_maquina += resultado[1]
 
             while True:
-                sair = input('\nDeseja sair [S/N]: ')
+                sair = input('\n\nDeseja sair [S/N]: ')
 
                 match sair:
                     case 'S':
@@ -91,12 +91,12 @@ while sair != 'S':
                     case 'N':
                         break
                     case _:
-                        pass
+                        print('Use [S] para sair ou [N] para continuar jogando!')  # noqa: E501;
 
 if pontuacao_jogador > pontuacao_maquina:
-    print(f'\nVocê venceu com {pontuacao_jogador} pontos.')
+    print(f'\n\nVocê venceu com {pontuacao_jogador} ponto(s)\n\n.')
 elif pontuacao_maquina > pontuacao_jogador:
-    print(f'\nA máquina venceu com vantagem de {pontuacao_maquina - pontuacao_jogador} pontos!')  # noqa: E501;
+    print(f'\n\nA máquina venceu com vantagem de {pontuacao_maquina - pontuacao_jogador} ponto(s)!\n\n')  # noqa: E501;
 else:
-    print('\nUé? Empatou?')
-    print('Então a vitória é da máquina, pois a casa sempre tem vantagem! ;)')
+    print('\n\nUé? Empatou?\n')
+    print('Então a vitória é da máquina, pois a casa sempre tem vantagem! ;)\n\n')  # noqa. E501;
