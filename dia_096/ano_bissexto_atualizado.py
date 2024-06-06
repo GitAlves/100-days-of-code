@@ -42,7 +42,7 @@ texto.grid(
     column=0,
     row=0,
     padx=5,
-    pady=10
+    pady=50
 )
 
 validacao = (janela.register(apenas_numeros), '%P')
@@ -56,7 +56,7 @@ caixa_de_entrada.grid(
     column=1,
     row=0,
     padx=5,
-    pady=10
+    pady=50
 )
 
 botao_verificar = tk.Button(
@@ -67,7 +67,7 @@ botao_verificar.grid(
     column=2,
     row=0,
     padx=5,
-    pady=10
+    pady=50
 )
 
 texto_resposta = tk.Label(text='')
