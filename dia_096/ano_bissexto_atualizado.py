@@ -1,16 +1,22 @@
 import tkinter as tk
 
 
-def validador(ano: int):
+def validador():
+    ano = int(caixa_de_entrada.get())
+
     if ano % 4 == 0:
-        return f'\n\n{ano} é um ano bissexto!'
+        texto_resposta.config(
+            text=f'{ano} é um ano bissexto!'
+        )
     else:
-        return f'\n\n{ano} não é um ano bissexto!'
+        texto_resposta.config(
+            text=f'{ano} não é um ano bissexto!'
+        )
 
 
 janela = tk.Tk()
 janela.title('Validador de anos bissextos!')
-janela.geometry('400x250')
+janela.geometry('350x250')
 
 texto = tk.Label(
     text='Insira um ano qualquer: '
@@ -22,7 +28,7 @@ texto.grid(
     pady=10
 )
 
-caixa_de_entrada = tk.Entry()
+caixa_de_entrada = tk.Entry(justify='center')
 caixa_de_entrada.grid(
     column=1,
     row=0,
@@ -41,7 +47,7 @@ botao_verificar.grid(
     pady=10
 )
 
-texto_resposta = tk.Label(text='O texto vai vir aqui ;)')
+texto_resposta = tk.Label(text='')
 texto_resposta.grid(
     column=0,
     row=1,
