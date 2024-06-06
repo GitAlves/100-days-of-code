@@ -45,8 +45,8 @@ texto = tk.Label(
 texto.grid(
     column=0,
     row=0,
-    padx=5,
-    pady=50
+    padx=(15, 0),
+    pady=(50, 30)
 )
 
 validacao = (janela.register(apenas_numeros), '%P')
@@ -59,8 +59,8 @@ caixa_de_entrada = tk.Entry(
 caixa_de_entrada.grid(
     column=1,
     row=0,
-    padx=5,
-    pady=50
+    padx=0,
+    pady=(50, 30)
 )
 
 botao_verificar = tk.Button(
@@ -70,8 +70,8 @@ botao_verificar = tk.Button(
 botao_verificar.grid(
     column=2,
     row=0,
-    padx=5,
-    pady=50
+    padx=(3, 15),
+    pady=(50, 30)
 )
 
 texto_resposta = tk.Label(text='')
@@ -79,7 +79,7 @@ texto_resposta.grid(
     column=0,
     row=1,
     padx=5,
-    pady=10,
+    pady=(20, 40),
     columnspan=3
 )
 
