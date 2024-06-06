@@ -6,31 +6,40 @@ def vez_da_maquina():
     return ch(['pedra', 'papel', 'tesoura'])
 
 
-def escolhendo_pedra(jogada_maquina):
+def escolhendo_pedra(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        return 'empate'
+        print('Empatou? A pontuação fica com a banca!!!')
+        return 0, 0
     elif jogada_maquina == 'papel':
-        return 'derrota'
+        print('A máquina ganhou dessa vez :(')
+        return 0, 1
     else:
-        return 'vitória'
+        print('Você venceu!')
+        return 1, 0
 
 
-def escolhendo_papel(jogada_maquina):
+def escolhendo_papel(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        return 'vitória'
+        print('Você venceu!')
+        return 1, 0
     elif jogada_maquina == 'papel':
-        return 'empate'
+        print('Empatou? A pontuação fica com a banca!!!')
+        return 0, 0
     else:
-        return 'derrota'
+        print('A máquina ganhou dessa vez :(')
+        return 0, 1
 
 
-def escolhendo_tesoura(jogada_maquina):
+def escolhendo_tesoura(jogada_maquina=vez_da_maquina):
     if jogada_maquina == 'pedra':
-        return 'derrota'
+        print('A máquina ganhou dessa vez :(')
+        return 0, 1
     elif jogada_maquina == 'papel':
-        return 'vitória'
+        print('Você venceu!')
+        return 1, 0
     else:
-        return 'empate'
+        print('Empatou? A pontuação fica com a banca!!!')
+        return 0, 0
 
 
 print('--------------------------------------')
@@ -59,28 +68,19 @@ while sair != 'S':
         except KeyError:
             print('\n\nUse os números [1], [2] ou [3] para escolher a sua jogada!')  # noqa: E501;
         else:
-            jogada_da_maquina = vez_da_maquina()
-
             print('\nConstatando o resultado...\n')
             sl(3)
 
-            if jogada_do_usuario == 1:
-                resultado = escolhendo_pedra(jogada_da_maquina)
-            elif jogada_do_usuario == 2:
-                resultado = escolhendo_papel(jogada_da_maquina)
-            elif jogada_do_usuario == 3:
-                resultado = escolhendo_tesoura(jogada_da_maquina)
-            else:
-                print('Para esta opção não há função!')
+            match jogada_do_usuario:
+                case 1:
+                    resultado = list(escolhendo_pedra())
+                case 2:
+                    resultado = list(escolhendo_papel())
+                case 3:
+                    resultado = (escolhendo_tesoura())
 
-            if resultado == 'vitória':
-                pontuacao_jogador += 1
-                print('Você venceu!')
-            elif resultado == 'derrota':
-                pontuacao_maquina += 1
-                print('A máquina ganhou dessa vez :(')
-            else:
-                print('Empatou? A pontuação fica com a banca!!!')
+            pontuacao_jogador += resultado[0]
+            pontuacao_maquina += resultado[1]
 
             while True:
                 sair = input('\nDeseja sair [S/N]: ')
