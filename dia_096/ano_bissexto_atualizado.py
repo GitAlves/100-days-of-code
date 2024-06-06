@@ -3,18 +3,22 @@ from datetime import datetime
 
 
 def validador():
-    ano = int(caixa_de_entrada.get())
-    verbo = comparar_ano(ano)
-    caixa_de_entrada.delete(0, 'end')
-
-    if ano % 4 == 0:
-        texto_resposta.config(
-            text=f'O ano {ano} {verbo} bissexto!'
-        )
+    try:
+        ano = int(caixa_de_entrada.get())
+    except ValueError:
+        pass
     else:
-        texto_resposta.config(
-            text=f'O ano {ano} não {verbo} bissexto!'
-        )
+        verbo = comparar_ano(ano)
+        caixa_de_entrada.delete(0, 'end')
+
+        if ano % 4 == 0:
+            texto_resposta.config(
+                text=f'O ano {ano} {verbo} bissexto!'
+            )
+        else:
+            texto_resposta.config(
+                text=f'O ano {ano} não {verbo} bissexto!'
+            )
 
 
 def comparar_ano(ano):
