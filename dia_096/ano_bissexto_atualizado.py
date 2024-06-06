@@ -5,6 +5,7 @@ from datetime import datetime
 def validador():
     ano = int(caixa_de_entrada.get())
     verbo = comparar_ano(ano)
+    caixa_de_entrada.delete(0, 'end')
 
     if ano % 4 == 0:
         texto_resposta.config(
