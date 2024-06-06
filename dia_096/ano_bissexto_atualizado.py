@@ -27,6 +27,10 @@ def comparar_ano(ano):
         return 'será'
 
 
+def apenas_numeros(caracter):
+    return caracter.isdigit() or caracter == ''
+
+
 janela = tk.Tk()
 janela.title('Validador de anos bissextos!')
 janela.geometry('350x250')
@@ -41,7 +45,13 @@ texto.grid(
     pady=10
 )
 
-caixa_de_entrada = tk.Entry(justify='center')
+validacao = (janela.register(apenas_numeros), '%P')
+
+caixa_de_entrada = tk.Entry(
+    justify='center',
+    validate='key',
+    validatecommand=validacao
+)
 caixa_de_entrada.grid(
     column=1,
     row=0,
