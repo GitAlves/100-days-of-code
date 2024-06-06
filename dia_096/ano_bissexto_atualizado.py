@@ -31,6 +31,10 @@ def apenas_numeros(caracter):
     return caracter.isdigit() or caracter == ''
 
 
+def sair():
+    janela.destroy()
+
+
 janela = tk.Tk()
 janela.title('Validador de anos bissextos!')
 janela.geometry('350x250')
@@ -74,6 +78,18 @@ texto_resposta = tk.Label(text='')
 texto_resposta.grid(
     column=0,
     row=1,
+    padx=5,
+    pady=10,
+    columnspan=3
+)
+
+botao_sair = tk.Button(
+    text='Sair',
+    command=sair
+)
+botao_sair.grid(
+    column=0,
+    row=2,
     padx=5,
     pady=10,
     columnspan=3
