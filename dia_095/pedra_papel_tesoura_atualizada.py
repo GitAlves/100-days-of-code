@@ -41,39 +41,57 @@ sair = 'N'
 pontuacao_jogador = 0
 pontuacao_maquina = 0
 while sair != 'S':
-    jogada_do_usuario = int(
-        input(
-            '\nDigite [1] para escolher a pedra!'
-            '\nDigite [2] para escolher o papel!'
-            '\nDigite [3] para escolher a tesoura!'
-            '\nEscolha: '
+    try:
+        jogada_do_usuario = int(
+            input(
+                '\nDigite [1] para escolher a pedra!'
+                '\nDigite [2] para escolher o papel!'
+                '\nDigite [3] para escolher a tesoura!'
+                '\nEscolha: '
+            )
         )
-    )
-
-    jogada_da_maquina = vez_da_maquina()
-
-    print('\nConstatando o resultado...\n')
-    sl(3)
-
-    if jogada_do_usuario == 1:
-        resultado = escolhendo_pedra(jogada_da_maquina)
-    elif jogada_do_usuario == 2:
-        resultado = escolhendo_papel(jogada_da_maquina)
-    elif jogada_do_usuario == 3:
-        resultado = escolhendo_tesoura(jogada_da_maquina)
+    except ValueError:
+        print('\n\nUse números inteiros para escolher a sua opção!')
     else:
-        print('Para esta opção não há função!')
+        try:
+            jogadas = {1: True, 2: True, 3: True}
+            validador_de_jogada = jogadas[jogada_do_usuario]
+        except KeyError:
+            print('\n\nUse os números [1], [2] ou [3] para escolher a sua jogada!')  # noqa: E501;
+        else:
+            jogada_da_maquina = vez_da_maquina()
 
-    if resultado == 'vitória':
-        pontuacao_jogador += 1
-        print('Você venceu!')
-    elif resultado == 'derrota':
-        pontuacao_maquina += 1
-        print('A máquina ganhou dessa vez :(')
-    else:
-        print('Empatou? A pontuação fica com a banca!!!')
+            print('\nConstatando o resultado...\n')
+            sl(3)
 
-    sair = input('\nDeseja sair [S/N]: ')
+            if jogada_do_usuario == 1:
+                resultado = escolhendo_pedra(jogada_da_maquina)
+            elif jogada_do_usuario == 2:
+                resultado = escolhendo_papel(jogada_da_maquina)
+            elif jogada_do_usuario == 3:
+                resultado = escolhendo_tesoura(jogada_da_maquina)
+            else:
+                print('Para esta opção não há função!')
+
+            if resultado == 'vitória':
+                pontuacao_jogador += 1
+                print('Você venceu!')
+            elif resultado == 'derrota':
+                pontuacao_maquina += 1
+                print('A máquina ganhou dessa vez :(')
+            else:
+                print('Empatou? A pontuação fica com a banca!!!')
+
+            while True:
+                sair = input('\nDeseja sair [S/N]: ')
+
+                match sair:
+                    case 'S':
+                        break
+                    case 'N':
+                        break
+                    case _:
+                        pass
 
 if pontuacao_jogador > pontuacao_maquina:
     print(f'\nVocê venceu com {pontuacao_jogador} pontos.')
