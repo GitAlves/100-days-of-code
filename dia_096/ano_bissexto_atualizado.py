@@ -45,12 +45,12 @@ janela.title('Validador de anos bissextos!')
 janela.geometry('350x250')
 
 texto = tk.Label(
-    text='Insira um ano qualquer: '
+    text='Insira um ano para validar: '
 )
 texto.grid(
     column=0,
     row=0,
-    padx=(15, 0),
+    padx=(10, 0),
     pady=(50, 30)
 )
 
@@ -75,7 +75,7 @@ botao_verificar = tk.Button(
 botao_verificar.grid(
     column=2,
     row=0,
-    padx=(3, 15),
+    padx=(3, 10),
     pady=(50, 30)
 )
 
