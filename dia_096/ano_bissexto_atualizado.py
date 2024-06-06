@@ -1,17 +1,30 @@
 import tkinter as tk
+from datetime import datetime
 
 
 def validador():
     ano = int(caixa_de_entrada.get())
+    verbo = comparar_ano(ano)
 
     if ano % 4 == 0:
         texto_resposta.config(
-            text=f'{ano} é um ano bissexto!'
+            text=f'{ano} {verbo} um ano bissexto!'
         )
     else:
         texto_resposta.config(
-            text=f'{ano} não é um ano bissexto!'
+            text=f'{ano} não {verbo} um ano bissexto!'
         )
+
+
+def comparar_ano(ano):
+    ano_atual = datetime.now()
+
+    if ano == ano_atual.year:
+        return 'é'
+    elif ano < ano_atual.year:
+        return 'foi'
+    else:
+        return 'será'
 
 
 janela = tk.Tk()
