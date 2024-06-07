@@ -15,14 +15,17 @@ def calcula_imc(peso, altura):
 
 
 def verificar_valores():
-    peso = int(caixa_peso.get())
-    altura = (int(caixa_altura.get())) / 100
+    try:
+        peso = int(caixa_peso.get())
+        altura = (int(caixa_altura.get())) / 100
+    except ValueError:
+        pass
+    else:
+        resultado = calcula_imc(peso, altura)
 
-    resultado = calcula_imc(peso, altura)
-
-    resultado_imc.config(
-        text=f'Você está {resultado}'
-    )
+        resultado_imc.config(
+            text=f'Você está {resultado}'
+        )
 
 
 interface = tk.Tk()
