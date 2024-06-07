@@ -2,16 +2,16 @@ import tkinter as tk
 
 
 def calcula_imc(peso, altura):
-    imc = peso / (altura ** 2)
+    imc = round(peso / (altura ** 2), 1)
 
     if imc < 18.5:
-        return 'abaixo do peso.'
+        return [imc, 'abaixo do peso.']
     elif 18.6 < imc < 24.9:
-        return 'no peso ideal. Meus parabéns!'
+        return [imc, 'no peso ideal. Meus parabéns!']
     elif 25 < imc < 29.99:
-        return 'com um leve sobrepeso.'
+        return [imc, 'com um leve sobrepeso.']
     else:
-        return 'em um grau de obesidade.'
+        return [imc, 'em um grau de obesidade.']
 
 
 def verificar_valores():
@@ -24,7 +24,7 @@ def verificar_valores():
         resultado = calcula_imc(peso, altura)
 
         resultado_imc.config(
-            text=f'Você está {resultado}'
+            text=f'O resultado do seu imc deu {resultado[0]}.\nVocê está {resultado[1]}'  # noqa: E501;
         )
 
 
