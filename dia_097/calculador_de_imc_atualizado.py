@@ -28,6 +28,10 @@ def verificar_valores():
         )
 
 
+def apenas_numeros(caracter):
+    return caracter.isdigit() or caracter == ''
+
+
 interface = tk.Tk()
 interface.title('Calculador de IMC')
 interface.geometry('400x300')
@@ -42,7 +46,12 @@ texto_peso.grid(
     pady=10
 )
 
-caixa_peso = tk.Entry()
+validacao = (interface.register(apenas_numeros), '%P')
+
+caixa_peso = tk.Entry(
+    validate='key',
+    validatecommand=validacao
+)
 caixa_peso.grid(
     column=1,
     row=0,
@@ -60,7 +69,10 @@ texto_altura.grid(
     pady=10
 )
 
-caixa_altura = tk.Entry()
+caixa_altura = tk.Entry(
+    validate='key',
+    validatecommand=validacao
+)
 caixa_altura.grid(
     column=1,
     row=1,
