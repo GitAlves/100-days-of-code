@@ -21,6 +21,9 @@ def verificar_valores():
     except ValueError:
         pass
     else:
+        caixa_altura.delete(0, 'end')
+        caixa_peso.delete(0, 'end')
+
         resultado = calcula_imc(peso, altura)
 
         resultado_imc.config(
@@ -49,6 +52,7 @@ texto_peso.grid(
 validacao = (interface.register(apenas_numeros), '%P')
 
 caixa_peso = tk.Entry(
+    justify='center',
     validate='key',
     validatecommand=validacao
 )
@@ -70,6 +74,7 @@ texto_altura.grid(
 )
 
 caixa_altura = tk.Entry(
+    justify='center',
     validate='key',
     validatecommand=validacao
 )
