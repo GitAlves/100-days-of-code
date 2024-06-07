@@ -7,7 +7,7 @@ def calcula_imc(peso, altura):
     if imc < 18.5:
         return 'abaixo do peso.'
     elif 18.6 < imc < 24.9:
-        return 'com peso ideal. Meus parabéns!'
+        return 'no peso ideal. Meus parabéns!'
     elif 25 < imc < 29.99:
         return 'com um leve sobrepeso.'
     else:
