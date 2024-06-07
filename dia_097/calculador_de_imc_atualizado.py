@@ -5,17 +5,24 @@ def calcula_imc(peso, altura):
     imc = peso / (altura ** 2)
 
     if imc < 18.5:
-        return 'abaixo do peso'
+        return 'abaixo do peso.'
     elif 18.6 < imc < 24.9:
         return 'com peso ideal. Meus parabéns!'
     elif 25 < imc < 29.99:
-        return 'com um leve sobrepeso'
+        return 'com um leve sobrepeso.'
     else:
-        return 'em um grau de obesidade'
-    
+        return 'em um grau de obesidade.'
 
-def verificar_valores(peso, altura):
-    ...
+
+def verificar_valores():
+    peso = int(caixa_peso.get())
+    altura = (int(caixa_altura.get())) / 100
+
+    resultado = calcula_imc(peso, altura)
+
+    resultado_imc.config(
+        text=f'Você está {resultado}'
+    )
 
 
 interface = tk.Tk()
@@ -71,7 +78,7 @@ botao_verificar.grid(
 )
 
 resultado_imc = tk.Label(
-    text='O resultado IMC virá aqui!'
+    text=''
 )
 resultado_imc.grid(
     column=0,
