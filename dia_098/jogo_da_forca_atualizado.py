@@ -1,4 +1,5 @@
 from random import choice as ch
+import tkinter as tk
 
 
 def lembrete_tentativas(numero):
@@ -48,3 +49,46 @@ while tentativas:
 
 if tentativas == 0:
     print(f'Game over!\nA palavra era "{palavra}".')
+
+
+def menu_dificuldades():
+    menu = tk.Tk()
+    menu.title('Escolha a dificuldade')
+    menu.geometry('300x250')
+
+    botao_facil = tk.Button(
+        text='Fácil - Acerte a palavra em 10 tentativas',
+    )
+    botao_facil.grid(
+        column=0,
+        row=0,
+        padx=40,
+        pady=(50, 10)
+    )
+
+    botao_medio = tk.Button(
+        menu,
+        text='Normal - Acerte a palavra em 6 tentativas'
+    )
+    botao_medio.grid(
+        column=0,
+        row=1,
+        padx=5,
+        pady=10
+    )
+
+    botao_dificil = tk.Button(
+        menu,
+        text='Difícil - Acerte a palavra em 4 tentativas'
+    )
+    botao_dificil.grid(
+        column=0,
+        row=2,
+        padx=5,
+        pady=10
+    )
+
+    menu.mainloop()
+
+
+menu_dificuldades()
