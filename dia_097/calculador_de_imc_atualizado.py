@@ -1,12 +1,13 @@
 import tkinter as tk
+from tkinter.ttk import Label, Entry, Button
 
 
 def calcula_imc(peso, altura):
     imc = round(peso / (altura ** 2), 1)
 
-    if imc < 18.5:
+    if imc < 18.59:
         return [imc, 'abaixo do peso.']
-    elif 18.6 < imc < 24.9:
+    elif 18.6 < imc < 24.99:
         return [imc, 'no peso ideal. Meus parabéns!']
     elif 25 < imc < 29.99:
         return [imc, 'com um leve sobrepeso.']
@@ -27,7 +28,10 @@ def verificar_valores():
         resultado = calcula_imc(peso, altura)
 
         resultado_imc.config(
-            text=f'O resultado do seu imc deu {resultado[0]}.\nVocê está {resultado[1]}'  # noqa: E501;
+            text=f'O resultado do seu imc deu {resultado[0]}.'
+        )
+        significado_imc.config(
+            text=f'Você está {resultado[1]}'
         )
 
 
@@ -39,55 +43,60 @@ interface = tk.Tk()
 interface.title('Calculador de IMC')
 interface.geometry('400x300')
 
-texto_peso = tk.Label(
-    text='Insira o seu peso'
+texto_peso = Label(
+    text='Insira o seu peso (Kg):',
+    font=('Arial', 12, 'bold')
 )
 texto_peso.grid(
     column=0,
     row=0,
-    padx=5,
-    pady=10
+    padx=(10, 1.5),
+    pady=(40, 10)
 )
 
 validacao = (interface.register(apenas_numeros), '%P')
 
-caixa_peso = tk.Entry(
+caixa_peso = Entry(
+    font=('Arial', 12),
     justify='center',
     validate='key',
-    validatecommand=validacao
+    validatecommand=validacao,
 )
 caixa_peso.grid(
     column=1,
     row=0,
-    padx=5,
-    pady=10
+    padx=(1.5, 10),
+    pady=(40, 5)
 )
 
-texto_altura = tk.Label(
-    text='Insira a sua altura'
+texto_altura = Label(
+    text='Insira a sua altura (cm):',
+    font=('Arial', 12, 'bold')
 )
 texto_altura.grid(
     column=0,
     row=1,
-    padx=5,
+    padx=(10, 1.5),
     pady=10
 )
 
-caixa_altura = tk.Entry(
+caixa_altura = Entry(
+    font=('Arial', 12),
     justify='center',
     validate='key',
-    validatecommand=validacao
+    validatecommand=validacao,
 )
 caixa_altura.grid(
     column=1,
     row=1,
-    padx=5,
+    padx=(1.5, 10),
     pady=10
 )
 
-botao_verificar = tk.Button(
+botao_verificar = Button(
     text='Verificar',
-    command=verificar_valores
+    command=verificar_valores,
+    width=20
 )
 botao_verificar.grid(
     column=0,
@@ -97,14 +106,39 @@ botao_verificar.grid(
     columnspan=2
 )
 
-resultado_imc = tk.Label(
-    text=''
+resultado_imc = Label(
+    text='',
+    font=('Times', 14)
 )
 resultado_imc.grid(
     column=0,
     row=3,
     padx=5,
-    pady=10,
+    pady=(20, 0),
+    columnspan=2
+)
+
+significado_imc = Label(
+    text='',
+    font=('Times', 14)
+)
+significado_imc.grid(
+    column=0,
+    row=4,
+    padx=5,
+    pady=(0, 10),
+    columnspan=2
+)
+
+botao_sair = Button(
+    text='Sair',
+    command=quit
+)
+botao_sair.grid(
+    column=0,
+    row=5,
+    padx=150,
+    pady=(10, 20),
     columnspan=2
 )
 
