@@ -7,6 +7,8 @@ class Jogo():
         self._janela_base = janela
         self._tentativas = 0
         self._palavra = ''
+        self.palavra_jogador = ''
+        self.lista_letras_erradas = ''
 
     def menu_dificuldades(self):
         self.janela_menu = self._janela_base
@@ -67,15 +69,18 @@ class Jogo():
         self.tela_jogo()
 
     def tela_jogo(self):
+        self._palavra = self.sortear_palavra()
+        self.palavra_jogador = '_' * len(self._palavra)
+
         self.janela_jogo = tk.Toplevel()
         self.janela_jogo.title('Acerte a palavra')
-        self.janela_jogo.geometry('300x200')
+        self.janela_jogo.geometry('300x230')
 
-        texto_tentativas = tk.Label(
+        self.texto_tentativas = tk.Label(
             self.janela_jogo,
             text=f'Tentativas: {self._tentativas}'
         )
-        texto_tentativas.grid(
+        self.texto_tentativas.grid(
             column=0,
             row=0,
             padx=(100, 0),
@@ -94,34 +99,58 @@ class Jogo():
             pady=10
         )
 
+        self.letras_erradas = tk.Label(
+            self.janela_jogo,
+            text=self.lista_letras_erradas
+        )
+        self.letras_erradas.grid(
+            column=1,
+            row=1,
+            padx=5,
+            pady=10
+        )
+
+        self.palavra_misteriosa = tk.Label(
+            self.janela_jogo,
+            text=self.palavra_jogador
+        )
+        self.palavra_misteriosa.grid(
+            column=0,
+            row=2,
+            padx=5,
+            pady=10,
+            columnspan=2
+        )
+
         texto_chute = tk.Label(
             self.janela_jogo,
             text='Chute uma letra'
         )
         texto_chute.grid(
             column=0,
-            row=2,
+            row=3,
             padx=5,
             pady=10
         )
 
-        campo_chute = tk.Entry(
+        self.campo_chute = tk.Entry(
             self.janela_jogo,
         )
-        campo_chute.grid(
+        self.campo_chute.grid(
             column=1,
-            row=2,
+            row=3,
             padx=5,
             pady=10
         )
 
         botao_verificar = tk.Button(
             self.janela_jogo,
-            text='Verificar'
+            text='Verificar',
+            command=self.verificar_letra
         )
         botao_verificar.grid(
-            column=3,
-            row=2,
+            column=2,
+            row=3,
             padx=5,
             pady=10,
             columnspan=2
@@ -134,7 +163,7 @@ class Jogo():
         )
         botao_sair.grid(
             column=0,
-            row=3,
+            row=4,
             padx=(100, 0),
             pady=10,
             columnspan=3
@@ -142,10 +171,8 @@ class Jogo():
 
         self.janela_jogo.mainloop()
 
-    def sortear_palavra(self):
-        with open('frutas.txt') as arq:
-            rascunho = arq.readlines()
-            self._palavra = ch(rascunho).split('\n')[0].upper()
+    def verificar_letra(self):
+        ...
 
 
 if __name__ == '__main__':
