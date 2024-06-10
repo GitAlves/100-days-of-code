@@ -296,13 +296,17 @@ class Jogo():
         self.tela_derrota.mainloop()
 
     def reiniciar_jogo_vencido(self):
-        ...
+        self.tela_vitoria.destroy()
+        self.janela_jogo.destroy()
+        self.janela_menu.deiconify()
 
     def reiniciar_jogo_perdido(self):
-        ...
+        self.tela_derrota.destroy()
+        self.janela_jogo.destroy()
+        self.janela_menu.deiconify()
 
     def sair_do_jogo(self):
-        ...
+        self.janela_menu.destroy()
 
 
 if __name__ == '__main__':
