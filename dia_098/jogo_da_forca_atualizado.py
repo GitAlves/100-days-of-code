@@ -177,6 +177,40 @@ class Jogo():
             return ch(rascunho).split('\n')[0].upper()
 
     def verificar_letra(self):
+        letra_usuario = str(self.campo_chute.get().upper())
+        palavra_usuario = list(self.palavra_jogador)
+
+        if letra_usuario in self._palavra:
+            for posicao, letra in enumerate(self._palavra):
+                if letra_usuario == letra:
+                    palavra_usuario[posicao] = letra_usuario
+
+            self.palavra_jogador = ''.join(palavra_usuario)
+            self.palavra_misteriosa.config(
+                text=self.palavra_jogador
+            )
+
+            if self.palavra_jogador == self._palavra:
+                self.vitoria()
+        else:
+            self._tentativas -= 1
+            self.lista_letras_erradas += letra_usuario
+
+            self.letras_erradas.config(
+                text=self.lista_letras_erradas
+            )
+
+            self.texto_tentativas.config(
+                text=f'Tentativas: {self._tentativas}'
+            )
+
+            if self._tentativas == 0:
+                self.derrota()
+
+    def vitoria():
+        ...
+
+    def derrota():
         ...
 
 
