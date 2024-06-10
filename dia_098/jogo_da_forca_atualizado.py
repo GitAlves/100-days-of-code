@@ -171,6 +171,11 @@ class Jogo():
 
         self.janela_jogo.mainloop()
 
+    def sortear_palavra(self):
+        with open('dia_098/frutas.txt') as arq:
+            rascunho = arq.readlines()
+            return ch(rascunho).split('\n')[0].upper()
+
     def verificar_letra(self):
         ...
 
