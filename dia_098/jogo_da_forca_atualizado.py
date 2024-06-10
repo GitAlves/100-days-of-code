@@ -207,10 +207,101 @@ class Jogo():
             if self._tentativas == 0:
                 self.derrota()
 
-    def vitoria():
+    def vitoria(self):
+        self.janela_jogo.withdraw()
+        self.tela_vitoria = tk.Toplevel()
+        self.tela_vitoria.title('Você venceu!')
+        self.tela_vitoria.geometry('200x150')
+
+        mensagem_vitoria = tk.Label(
+            self.tela_vitoria,
+            text='Parabéns!'
+        )
+        mensagem_vitoria.grid(
+            column=0,
+            row=0,
+            padx=5,
+            pady=10,
+            columnspan=2
+        )
+
+        botao_reiniciar = tk.Button(
+            self.tela_vitoria,
+            text='Reiniciar',
+            command=self.reiniciar_jogo_vencido
+        )
+        botao_reiniciar.grid(
+            column=0,
+            row=1,
+            padx=5,
+            pady=10
+        )
+
+        botao_sair = tk.Button(
+            self.tela_vitoria,
+            text='Sair',
+            command=self.sair_do_jogo
+        )
+        botao_sair.grid(
+            column=1,
+            row=1,
+            padx=5,
+            pady=10
+        )
+
+        self.tela_vitoria.mainloop()
+
+    def derrota(self):
+        self.janela_jogo.withdraw()
+        self.tela_derrota = tk.Toplevel()
+        self.tela_derrota.title('Game over!')
+        self.tela_derrota.geometry('200x150')
+
+        mensagem_derrota = tk.Label(
+            self.tela_derrota,
+            text=f'Não foi dessa vez!!!\nA palavra era {self._palavra}'
+        )
+        mensagem_derrota.grid(
+            column=0,
+            row=0,
+            padx=5,
+            pady=10,
+            columnspan=2
+        )
+
+        botao_reiniciar = tk.Button(
+            self.tela_derrota,
+            text='Reiniciar',
+            command=self.reiniciar_jogo_perdido
+        )
+        botao_reiniciar.grid(
+            column=0,
+            row=1,
+            padx=5,
+            pady=10
+        )
+
+        botao_sair = tk.Button(
+            self.tela_derrota,
+            text='Sair',
+            command=self.sair_do_jogo
+        )
+        botao_sair.grid(
+            column=1,
+            row=1,
+            padx=5,
+            pady=10
+        )
+
+        self.tela_derrota.mainloop()
+
+    def reiniciar_jogo_vencido(self):
         ...
 
-    def derrota():
+    def reiniciar_jogo_perdido(self):
+        ...
+
+    def sair_do_jogo(self):
         ...
 
 
