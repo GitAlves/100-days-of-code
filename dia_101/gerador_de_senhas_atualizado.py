@@ -1,13 +1,14 @@
 from random import choice as ch
+import string
 
 
 def caractere_aleatorio():
-    lista_caracteres = [
-        'abcdefghijklmnopqrstuvwxyz',
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        '1234567890',
-        '" !@#$%¨&*()-_=+[]{^~};.,|'
-    ]
+    lista_caracteres = str(
+        string.ascii_lowercase +
+        string.ascii_uppercase +
+        string.digits +
+        string.punctuation
+    )
 
     categoria_escolhida = ch(lista_caracteres)
 
