@@ -2,7 +2,7 @@ from random import choice as ch
 import string
 
 
-def caractere_aleatorio():
+def gerar_senha(quant_caracteres):
     lista_caracteres = str(
         string.ascii_lowercase +
         string.ascii_uppercase +
@@ -10,9 +10,13 @@ def caractere_aleatorio():
         string.punctuation
     )
 
-    categoria_escolhida = ch(lista_caracteres)
+    senha = ''
+    while quant_caracteres:
+        senha += ch(lista_caracteres)
 
-    return ch(categoria_escolhida)
+        quant_caracteres -= 1
+
+    return senha
 
 
 quantidade_caracteres = int(
@@ -21,8 +25,6 @@ quantidade_caracteres = int(
     )
 )
 
-senha = ''
-for i in range(quantidade_caracteres):
-    senha += caractere_aleatorio()
+senha = gerar_senha(quantidade_caracteres)
 
 print(f'\nA senha sugerida foi: {senha}')
