@@ -74,23 +74,25 @@ class Jogo():
 
         self.janela_jogo = tk.Toplevel()
         self.janela_jogo.title('Acerte a palavra')
-        self.janela_jogo.geometry('300x230')
+        self.janela_jogo.geometry('380x250+60+60')
 
-        self.texto_tentativas = tk.Label(
+        self.texto_dica = tk.Label(
             self.janela_jogo,
-            text=f'Tentativas: {self._tentativas}'
+            text='Dica: É uma fruta!!!',
+            font=('Arial', 12, 'bold')
         )
-        self.texto_tentativas.grid(
+        self.texto_dica.grid(
             column=0,
             row=0,
-            padx=(100, 0),
+            padx=(80, 5),
             pady=10,
             columnspan=3
         )
 
         texto_letras_erradas = tk.Label(
             self.janela_jogo,
-            text='Letras erradas: '
+            text='Letras erradas: ',
+            font=('Arial', 12, 'bold')
         )
         texto_letras_erradas.grid(
             column=0,
@@ -101,7 +103,8 @@ class Jogo():
 
         self.letras_erradas = tk.Label(
             self.janela_jogo,
-            text=self.lista_letras_erradas
+            text=self.lista_letras_erradas,
+            font=('Arial', 12, 'bold'),
         )
         self.letras_erradas.grid(
             column=1,
@@ -112,34 +115,37 @@ class Jogo():
 
         self.palavra_misteriosa = tk.Label(
             self.janela_jogo,
-            text=self.palavra_jogador
+            text=self.palavra_jogador,
+            font=('Arial', 12, 'bold')
         )
         self.palavra_misteriosa.grid(
             column=0,
             row=2,
-            padx=5,
-            pady=10,
-            columnspan=2
+            padx=(80, 5),
+            pady=(10, 30),
+            columnspan=3
         )
 
         texto_chute = tk.Label(
             self.janela_jogo,
-            text='Chute uma letra'
+            text='Chute uma letra:',
+            font=('Arial', 12, 'bold')
         )
         texto_chute.grid(
             column=0,
             row=3,
-            padx=5,
+            padx=(5, 0),
             pady=10
         )
 
         self.campo_chute = tk.Entry(
             self.janela_jogo,
+            font=('Arial', 10)
         )
         self.campo_chute.grid(
             column=1,
             row=3,
-            padx=5,
+            padx=(0, 5),
             pady=10
         )
 
@@ -156,15 +162,15 @@ class Jogo():
             columnspan=2
         )
 
-        botao_sair = tk.Button(
+        self.texto_tentativas = tk.Label(
             self.janela_jogo,
-            text='Sair',
-            command=quit
+            text=f'Tentativas: {self._tentativas}',
+            font=('Arial', 12, 'bold')
         )
-        botao_sair.grid(
+        self.texto_tentativas.grid(
             column=0,
             row=4,
-            padx=(100, 0),
+            padx=(80, 0),
             pady=10,
             columnspan=3
         )
@@ -211,17 +217,18 @@ class Jogo():
         self.janela_jogo.withdraw()
         self.tela_vitoria = tk.Toplevel()
         self.tela_vitoria.title('Você venceu!')
-        self.tela_vitoria.geometry('200x150')
+        self.tela_vitoria.geometry('250x150')
 
         mensagem_vitoria = tk.Label(
             self.tela_vitoria,
-            text='Parabéns!'
+            text='Parabéns!',
+            font=('Arial', 15, 'bold')
         )
         mensagem_vitoria.grid(
             column=0,
             row=0,
-            padx=5,
-            pady=10,
+            padx=(80, 100),
+            pady=(40, 20),
             columnspan=2
         )
 
@@ -245,7 +252,7 @@ class Jogo():
         botao_sair.grid(
             column=1,
             row=1,
-            padx=5,
+            padx=(5, 40),
             pady=10
         )
 
@@ -254,18 +261,19 @@ class Jogo():
     def derrota(self):
         self.janela_jogo.withdraw()
         self.tela_derrota = tk.Toplevel()
-        self.tela_derrota.title('Game over!')
-        self.tela_derrota.geometry('200x150')
+        self.tela_derrota.title('Game over :(')
+        self.tela_derrota.geometry('300x150')
 
         mensagem_derrota = tk.Label(
             self.tela_derrota,
-            text=f'Não foi dessa vez!!!\nA palavra era {self._palavra}'
+            text=f'Não foi dessa vez!!!\nA palavra era "{self._palavra}".',
+            font=('Arial', 11, 'bold')
         )
         mensagem_derrota.grid(
             column=0,
             row=0,
-            padx=5,
-            pady=10,
+            padx=(60, 60),
+            pady=20,
             columnspan=2
         )
 
@@ -277,7 +285,7 @@ class Jogo():
         botao_reiniciar.grid(
             column=0,
             row=1,
-            padx=5,
+            padx=(5, 15),
             pady=10
         )
 
@@ -289,7 +297,7 @@ class Jogo():
         botao_sair.grid(
             column=1,
             row=1,
-            padx=5,
+            padx=(15, 5),
             pady=10
         )
 
