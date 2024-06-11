@@ -184,6 +184,7 @@ class Jogo():
 
     def verificar_letra(self):
         letra_usuario = str(self.campo_chute.get().upper())
+        self.campo_chute.delete(0, 'end')
         palavra_usuario = list(self.palavra_jogador.replace(' ', ''))
 
         if letra_usuario in self._palavra:
@@ -304,11 +305,13 @@ class Jogo():
         self.tela_derrota.mainloop()
 
     def reiniciar_jogo_vencido(self):
+        self.lista_letras_erradas = ''
         self.tela_vitoria.destroy()
         self.janela_jogo.destroy()
         self.janela_menu.deiconify()
 
     def reiniciar_jogo_perdido(self):
+        self.lista_letras_erradas = ''
         self.tela_derrota.destroy()
         self.janela_jogo.destroy()
         self.janela_menu.deiconify()
