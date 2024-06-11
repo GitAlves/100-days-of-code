@@ -178,7 +178,7 @@ class Jogo():
 
     def verificar_letra(self):
         letra_usuario = str(self.campo_chute.get().upper())
-        palavra_usuario = list(self.palavra_jogador)
+        palavra_usuario = list(self.palavra_jogador.replace(' ', ''))
 
         if letra_usuario in self._palavra:
             for posicao, letra in enumerate(self._palavra):
@@ -190,7 +190,7 @@ class Jogo():
                 text=self.palavra_jogador
             )
 
-            if self.palavra_jogador == self._palavra:
+            if self.palavra_jogador.replace(' ', '') == self._palavra:
                 self.vitoria()
         else:
             self._tentativas -= 1
