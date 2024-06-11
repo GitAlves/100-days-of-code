@@ -70,7 +70,7 @@ class Jogo():
 
     def tela_jogo(self):
         self._palavra = self.sortear_palavra()
-        self.palavra_jogador = '_' * len(self._palavra)
+        self.palavra_jogador = '_ ' * len(self._palavra)
 
         self.janela_jogo = tk.Toplevel()
         self.janela_jogo.title('Acerte a palavra')
@@ -185,7 +185,7 @@ class Jogo():
                 if letra_usuario == letra:
                     palavra_usuario[posicao] = letra_usuario
 
-            self.palavra_jogador = ''.join(palavra_usuario)
+            self.palavra_jogador = ' '.join(palavra_usuario)
             self.palavra_misteriosa.config(
                 text=self.palavra_jogador
             )
